@@ -23,6 +23,7 @@ func _ready() -> void:
 	_choose_scenes()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(_delta: float) -> void:
 	$Camera.position.y = min($Player.position.y-500, 0)
 
@@ -37,7 +38,7 @@ func _choose_scenes() -> void:
 	var pos = first_room.global_position.y
 	first_room.add_to_group("Rooms")
 	add_child(first_room)
-	
+
 	# add the remaining 
 	for stage in stages:
 		var room = stage.instantiate()

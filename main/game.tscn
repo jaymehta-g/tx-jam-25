@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=7 format=3 uid="uid://dtoino2p3kn2d"]
 
 [ext_resource type="Script" uid="uid://cy3th56ol1oi3" path="res://main/game.gd" id="1_ph3h8"]
@@ -13,6 +14,7 @@ b = Vector2(-1, 525)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46yon"]
 size = Vector2(1620, 40)
+
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ph3h8")
@@ -50,3 +52,4 @@ anchor_mode = 0
 limit_left = 0
 limit_right = 1920
 limit_bottom = 1080
+
