@@ -6,16 +6,13 @@ static var instance: Game
 
 const HAZARD = preload("uid://d1mn45ydc6cma")
 const max_rooms = 3
-
-
-#@onready var timer: Timer = $Timer
-#@onready var label: Label = $Label
+# width of shop is 300 pixels
+const stage_y_size = 1080
 
 @onready var stage0:PackedScene = preload("res://main/stages/stage0.tscn")
 @onready var stage1:PackedScene = preload("res://main/stages/stage0.tscn")
 @onready var stage2:PackedScene = preload("res://main/stages/stage0.tscn")
-
-@onready var stages:Array = [stage0, stage1, stage2]
+@onready var total_stages:Array = [stage0, stage1, stage2]
 
 
 # prolly don't need 
@@ -23,7 +20,6 @@ const max_rooms = 3
 	get:
 		return get_tree().get_nodes_in_group("Rooms")
 
-var traps_left := 4
 
 var players: Array[PlayerInfo] = [preload("uid://cxg4y4vhfhqlb"), preload("uid://8rh52pobuejj")]
 
@@ -48,6 +44,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _process(delta: float) -> void:
+  $Camera.position.y = min($Player.position.y-500, 0)
 	running_player.time_left -= delta
 	
 	if $"dbg timers": $"dbg timers".text = "%0.2f, %0.2f" % [players[0].time_left, players[1].time_left]
@@ -62,18 +59,20 @@ func _process(delta: float) -> void:
 
 func _choose_scenes() -> void:
 	# choose 3 rooms at a random order and sequence
-	#stages.duplicate().shuffle().slice(0, 2)
-	pass
+	var stages = total_stages.duplicate()
+	stages.shuffle()
+	stages = stages.slice(0, 3, 1, true)
+	# need to add floor to 1st stage always - better way to do this ? 
+	var first_scene = stages.pop_at(0)
+	var first_room = first_scene.instantiate()
+	var pos = first_room.global_position.y
+	first_room.add_to_group("Rooms")
+	add_child(first_room)
 
-	#for stage in stages: 
-		#stage 
-
-func _on_stage_zone_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		print('next stage up')
-
-func _on_trap_timer_timeout():
-	if traps_left < 5:
-		traps_left += 1
-	
-	
+	# add the remaining 
+	for stage in stages:
+		var room = stage.instantiate()
+		pos -= stage_y_size
+		room.global_position.y = pos
+		room.add_to_group("Rooms")
+		add_child(room)
