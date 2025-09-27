@@ -1,19 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7jmq0wkpvmsn"]
 
-[ext_resource type="Texture2D" uid="uid://ddtwgvf2qf7sf" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://k03itql36q55" path="res://entity/player/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://bx3peccsgjca3" path="res://entity/player/placehold.png" id="2_e6ar1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(20, 32)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-position = Vector2(1, 0)
 collision_mask = 3
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
-texture = ExtResource("1_4flbx")
+texture = ExtResource("2_e6ar1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("RectangleShape2D_onrkg")

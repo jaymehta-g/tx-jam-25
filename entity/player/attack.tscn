@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://fmrjol5xhkii"]
+[gd_scene load_steps=3 format=3 uid="uid://fmrjol5xhkii"]
 
 [ext_resource type="Script" uid="uid://dtw8gen6d7qxi" path="res://entity/player/attack.gd" id="1_hvxpb"]
+[ext_resource type="Texture2D" uid="uid://b73osdy4uijrh" path="res://entity/player/placehold attack.png" id="2_7f8cy"]
 
 [node name="Attack" type="Area2D"]
 script = ExtResource("1_hvxpb")
@@ -12,3 +13,9 @@ polygon = PackedVector2Array(0, 0, 13, -14, 41, -22, 68, -13, 75, 5, 62, 14, 24,
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.21875, 1)
+texture = ExtResource("2_7f8cy")
+centered = false
+offset = Vector2(0, -16)

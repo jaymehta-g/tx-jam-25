@@ -2,6 +2,8 @@ class_name ItemDisplaySpace
 
 extends MarginContainer
 
+@export var possible_traps: Array[TrapInfo]
+
 @onready var filled_item_display: PanelContainer = %"Filled Item Display"
 @onready var item_texture_rect: TextureRect = %ItemTextureRect
 @onready var price_label: Label = %PriceLabel
@@ -9,9 +11,9 @@ extends MarginContainer
 
 @onready var refresh_timer: Timer = $RefreshTimer
 
-var filled_state := true:
+var held_trap: TrapInfo:
 	set(v):
-		filled_state = v
+		held_trap = v
 		filled_item_display.modulate.a = 1 if v else 0
 		new_item_progress.modulate.a = 0 if v else 1
 
@@ -19,9 +21,11 @@ var disabled := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	refresh_timer.timeout.connect(_refresh_timeout)
-	SignalBus.trap_picked.connect(func(_a, _b): disabled = true)
+	refresh_timer.timeout.connect(refill_space)
+	SignalBus.trap_picked.connect(func(_type): disabled = true)
 	SignalBus.trap_placed.connect(func(): disabled = false)
+	
+	refill_space()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,10 +39,15 @@ func _gui_input(event: InputEvent) -> void:
 	var mouse_event := event as InputEventMouseButton
 	if mouse_event.button_index != 1 or not mouse_event.pressed: return
 	
-	filled_state = false
 	refresh_timer.start()
-	SignalBus.trap_picked.emit(0,0)
-	pass
+	SignalBus.trap_picked.emit(held_trap)
+	
+	held_trap = null
 
-func _refresh_timeout():
-	filled_state = true
+func refill_space():
+	var new_trap := possible_traps.pick_random() as TrapInfo
+	item_texture_rect.texture = new_trap.sprite
+	price_label.text = str(new_trap.cost)
+	
+	held_trap = new_trap
+	pass
