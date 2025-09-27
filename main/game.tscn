@@ -59,3 +59,5 @@ position = Vector2(-1, -610)
 
 [connection signal="body_entered" from="Areas/stage_zone" to="." method="_on_stage_zone_body_entered"]
 [node name="Item Shop" parent="." instance=ExtResource("4_46yon")]
+
+[node name="Trap Player" type="Node2D" parent="."]

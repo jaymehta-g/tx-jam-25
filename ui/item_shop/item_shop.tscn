@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6qfjh252ep2x"]
+[gd_scene load_steps=5 format=3 uid="uid://b6qfjh252ep2x"]
 
+[ext_resource type="Script" uid="uid://b4s7st0mbwawv" path="res://ui/item_shop/item_shop.gd" id="1_1warv"]
 [ext_resource type="Theme" uid="uid://d36lbu0jevudq" path="res://ui/item_shop/item_shop_theme.tres" id="1_rmute"]
 [ext_resource type="PackedScene" uid="uid://cdpjbgistk7k5" path="res://ui/item_shop/item_display.tscn" id="2_1warv"]
 
@@ -8,7 +9,9 @@ font_size = 32
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Item Shop" type="CanvasLayer"]
+[node name="Item Shop" type="CanvasLayer" node_paths=PackedStringArray("shop_displays")]
+script = ExtResource("1_1warv")
+shop_displays = [NodePath("PanelContainer/Control/Item Display"), NodePath("PanelContainer/Control/Item Display2"), NodePath("PanelContainer/Control/Item Display3"), NodePath("PanelContainer/Control/Item Display4")]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = -1

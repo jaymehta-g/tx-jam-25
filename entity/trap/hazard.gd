@@ -1,3 +1,4 @@
+class_name BaseTrap
 extends Area2D
 
 @onready var label: Label = $Label
@@ -6,6 +7,9 @@ extends Area2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var health := 3
+
+func activate():
+	timer.start()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

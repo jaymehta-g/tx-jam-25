@@ -7,11 +7,31 @@ extends MarginContainer
 @onready var price_label: Label = %PriceLabel
 @onready var new_item_progress: TextureProgressBar = %"New Item Progress"
 
+@onready var refresh_timer: Timer = $RefreshTimer
+
+var filled_state := true:
+	set(v):
+		filled_state = v
+		filled_item_display.modulate.a = 1 if v else 0
+		new_item_progress.modulate.a = 0 if v else 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	refresh_timer.timeout.connect(_refresh_timeout)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	new_item_progress.value = 1.0 - (refresh_timer.time_left / refresh_timer.wait_time)
+
+func _gui_input(event: InputEvent) -> void:
+	if not event is InputEventMouseButton: return
+	var mouse_event := event as InputEventMouseButton
+	if mouse_event.button_index != 1 or not mouse_event.pressed: return
+	filled_state = false
+	refresh_timer.start()
+	SignalBus.trap_picked.emit(0,0)
 	pass
+
+func _refresh_timeout():
+	filled_state = true

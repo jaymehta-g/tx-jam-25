@@ -28,4 +28,3 @@ offset_bottom = 12.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-autostart = true
