@@ -29,6 +29,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="tx-jam-25"
 
+[global_group]
+
+Rooms=""
+
 [input]
 
 click={
