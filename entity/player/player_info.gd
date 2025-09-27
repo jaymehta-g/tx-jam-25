@@ -5,3 +5,4 @@ extends Resource
 
 # Changed by game node!
 var time_left: float
+var node: Player

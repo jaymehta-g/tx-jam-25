@@ -29,6 +29,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="tx-jam-25"
 
+[editor]
+
+movie_writer/movie_file="/u/jmehta05/Documents/tx-jam-25/./movie.mp4.avi"
+
 [global_group]
 
 Rooms=""

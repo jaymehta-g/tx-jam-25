@@ -22,7 +22,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	position = get_viewport().get_mouse_position()
+	position = get_viewport().get_mouse_position() + get_viewport().get_camera_2d().position
 	if is_holding_item and Input.is_action_just_pressed("click") and click_cooldown.is_stopped():
 		is_holding_item = false
 		# HACK
