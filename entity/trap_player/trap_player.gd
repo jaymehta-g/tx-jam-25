@@ -10,6 +10,7 @@ var held_item: Node2D
 
 func _item_picked(trap: TrapInfo):
 	var n := trap.scene.instantiate() as Node2D
+	Game.instance.trapping_player.time_left -= trap.cost
 	add_child(n)
 	held_item = n
 	is_holding_item = true

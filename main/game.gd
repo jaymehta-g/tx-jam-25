@@ -1,4 +1,8 @@
+class_name Game
 extends Node2D
+static var instance: Game
+
+
 
 const HAZARD = preload("uid://d1mn45ydc6cma")
 const max_rooms = 3
@@ -21,11 +25,20 @@ const max_rooms = 3
 
 var traps_left := 4
 
+var players: Array[PlayerInfo] = [preload("uid://cxg4y4vhfhqlb"), preload("uid://8rh52pobuejj")]
+
+var running_player := players[0]
+var trapping_player = players[1]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	assert(not instance)
+	instance = self
+	
+	for x in players: x.time_left = 5*60
+	
 	#autoload scenes
 	_choose_scenes()
-
 
 	# timer.timeout.connect(func():
 	# 	traps_left += 1
@@ -35,6 +48,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _process(delta: float) -> void:
+	running_player.time_left -= delta
+	
+	if $"dbg timers": $"dbg timers".text = "%0.2f, %0.2f" % [players[0].time_left, players[1].time_left]
 	pass
 	#label.text = "Traps Left: %s" % traps_left
 	#if Input.is_action_just_pressed("click") and traps_left > 0:

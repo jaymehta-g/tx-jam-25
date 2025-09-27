@@ -17,3 +17,7 @@ position = Vector2(251, 375)
 [node name="Item Shop" parent="." instance=ExtResource("4_46yon")]
 
 [node name="Trap Player" parent="." instance=ExtResource("5_vfw6y")]
+
+[node name="dbg timers" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

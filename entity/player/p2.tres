@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PlayerInfo" load_steps=3 format=3 uid="uid://8rh52pobuejj"]
+
+[ext_resource type="Script" uid="uid://ceeo521ube6d3" path="res://entity/player/player_info.gd" id="1_24mnc"]
+[ext_resource type="Texture2D" uid="uid://bx3peccsgjca3" path="res://entity/player/placehold.png" id="2_11ahn"]
+
+[resource]
+script = ExtResource("1_24mnc")
+sprite = ExtResource("2_11ahn")
+metadata/_custom_type_script = "uid://ceeo521ube6d3"
