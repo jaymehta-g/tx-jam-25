@@ -1,9 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtoino2p3kn2d"]
+[gd_scene load_steps=8 format=4 uid="uid://dtoino2p3kn2d"]
 
 [ext_resource type="Script" uid="uid://cy3th56ol1oi3" path="res://main/game.gd" id="1_ph3h8"]
 [ext_resource type="PackedScene" uid="uid://c7jmq0wkpvmsn" path="res://entity/player/player.tscn" id="2_46yon"]
-[ext_resource type="PackedScene" uid="uid://dkx3baoaaitp5" path="res://main/stages/stage0.tscn" id="3_46yon"]
-[ext_resource type="PackedScene" uid="uid://klpj7h4lxgid" path="res://main/stages/stage1.tscn" id="4_vfw6y"]
+[ext_resource type="Texture2D" uid="uid://ddtwgvf2qf7sf" path="res://icon.svg" id="3_vfw6y"]
+[ext_resource type="PackedScene" uid="uid://b6qfjh252ep2x" path="res://ui/item_shop/item_shop.tscn" id="4_46yon"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
+texture = ExtResource("3_vfw6y")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_feb5d"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_e2o6t")
 
 [sub_resource type="LabelSettings" id="LabelSettings_feb5d"]
 font_size = 50
@@ -21,6 +32,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Traps Left: "
@@ -46,3 +58,4 @@ metadata/_edit_lock_ = true
 position = Vector2(-1, -610)
 
 [connection signal="body_entered" from="Areas/stage_zone" to="." method="_on_stage_zone_body_entered"]
+[node name="Item Shop" parent="." instance=ExtResource("4_46yon")]

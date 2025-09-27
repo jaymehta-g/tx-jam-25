@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6qfjh252ep2x"]
+
+[ext_resource type="Theme" uid="uid://d36lbu0jevudq" path="res://ui/item_shop/item_shop_theme.tres" id="1_rmute"]
+[ext_resource type="PackedScene" uid="uid://cdpjbgistk7k5" path="res://ui/item_shop/item_display.tscn" id="2_1warv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pvivc"]
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Item Shop" type="CanvasLayer"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 1.0
+grow_vertical = 2
+theme = ExtResource("1_rmute")
+
+[node name="Control" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("1_rmute")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/Control"]
+custom_minimum_size = Vector2(0, 83.055)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/Control/MarginContainer"]
+layout_mode = 2
+text = "P2 Timer"
+label_settings = SubResource("LabelSettings_pvivc")
+horizontal_alignment = 1
+
+[node name="Item Display" parent="PanelContainer/Control" instance=ExtResource("2_1warv")]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Item Display2" parent="PanelContainer/Control" instance=ExtResource("2_1warv")]
+layout_mode = 2
+
+[node name="Item Display3" parent="PanelContainer/Control" instance=ExtResource("2_1warv")]
+layout_mode = 2
+
+[node name="Item Display4" parent="PanelContainer/Control" instance=ExtResource("2_1warv")]
+layout_mode = 2
