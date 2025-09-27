@@ -7,6 +7,9 @@ extends Area2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 var health := 3
+var is_activated := false
+
+signal activated
 
 func activate():
 	timer.start()
@@ -23,9 +26,12 @@ func _process(delta: float) -> void:
 
 func _activate_timer_ready():
 	label.queue_free()
+	is_activated = true
+	activated.emit()
 	sprite_2d.modulate.a = 1.0
 	collision_shape_2d.disabled = false
 
 func _collision(b: Node2D):
 	if b is Player:
 		print_debug("you died lol")
+		SignalBus.player_hurt.emit()

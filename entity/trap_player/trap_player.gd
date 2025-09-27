@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var traps: Array[TrapInfo]
 const HAZARD = preload("uid://d1mn45ydc6cma")
 
 var is_holding_item := false
@@ -7,8 +8,9 @@ var held_item: Node2D
 
 @onready var click_cooldown: Timer = $"Click Cooldown"
 
-func _item_picked(_a, _b):
-	var n := HAZARD.instantiate() as Node2D
+func _item_picked(trap: TrapInfo):
+	var n := trap.scene.instantiate() as Node2D
+	Game.instance.trapping_player.time_left -= trap.cost
 	add_child(n)
 	held_item = n
 	is_holding_item = true

@@ -1,4 +1,8 @@
+class_name Game
 extends Node2D
+static var instance: Game
+
+
 
 const HAZARD = preload("uid://d1mn45ydc6cma")
 const max_rooms = 3
@@ -17,15 +21,41 @@ const stage_y_size = 1080
 		return get_tree().get_nodes_in_group("Rooms")
 
 
+var players: Array[PlayerInfo] = [preload("uid://cxg4y4vhfhqlb"), preload("uid://8rh52pobuejj")]
+
+var running_player := players[0]
+var trapping_player = players[1]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	assert(not instance)
+	instance = self
+	
+	for x in players: x.time_left = 5*60
+	
 	#autoload scenes
 	_choose_scenes()
 
+	# timer.timeout.connect(func():
+	# 	traps_left += 1
+	# 	traps_left = min(traps_left, 5)
+	# )
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-func _process(_delta: float) -> void:
-	$Camera.position.y = min($Player.position.y-500, 0)
+func _process(delta: float) -> void:
+  $Camera.position.y = min($Player.position.y-500, 0)
+	running_player.time_left -= delta
+	
+	if $"dbg timers": $"dbg timers".text = "%0.2f, %0.2f" % [players[0].time_left, players[1].time_left]
+	pass
+	#label.text = "Traps Left: %s" % traps_left
+	#if Input.is_action_just_pressed("click") and traps_left > 0:
+		#traps_left -= 1
+		#var pos := get_viewport().get_mouse_position()
+		#var n := HAZARD.instantiate()
+		#n.position = pos
+		#add_child(n)
 
 func _choose_scenes() -> void:
 	# choose 3 rooms at a random order and sequence
