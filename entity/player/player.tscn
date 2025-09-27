@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7jmq0wkpvmsn"]
 
 [ext_resource type="Texture2D" uid="uid://ddtwgvf2qf7sf" path="res://icon.svg" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://k03itql36q55" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://k03itql36q55" path="res://entity/player/player.gd" id="1_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(20, 32)
@@ -15,3 +15,11 @@ texture = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Jump Cooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Attack Cooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
