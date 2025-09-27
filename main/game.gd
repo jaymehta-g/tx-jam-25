@@ -4,8 +4,8 @@ const HAZARD = preload("uid://d1mn45ydc6cma")
 const max_rooms = 3
 
 
-@onready var timer: Timer = $Timer
-@onready var label: Label = $Label
+#@onready var timer: Timer = $Timer
+#@onready var label: Label = $Label
 
 @onready var stage0:PackedScene = preload("res://main/stages/stage0.tscn")
 @onready var stage1:PackedScene = preload("res://main/stages/stage0.tscn")
@@ -23,8 +23,6 @@ var traps_left := 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$TrapTimer.start(5)
-
 	#autoload scenes
 	_choose_scenes()
 
@@ -37,17 +35,19 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _process(delta: float) -> void:
-	label.text = "Traps Left: %s" % traps_left
-	if Input.is_action_just_pressed("click") and traps_left > 0:
-		traps_left -= 1
-		var pos := get_viewport().get_mouse_position()
-		var n := HAZARD.instantiate()
-		n.position = pos
-		add_child(n)
+	pass
+	#label.text = "Traps Left: %s" % traps_left
+	#if Input.is_action_just_pressed("click") and traps_left > 0:
+		#traps_left -= 1
+		#var pos := get_viewport().get_mouse_position()
+		#var n := HAZARD.instantiate()
+		#n.position = pos
+		#add_child(n)
 
 func _choose_scenes() -> void:
 	# choose 3 rooms at a random order and sequence
-	stages.duplicate().shuffle().slice(0, 2)
+	#stages.duplicate().shuffle().slice(0, 2)
+	pass
 
 	#for stage in stages: 
 		#stage 

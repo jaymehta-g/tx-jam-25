@@ -1,0 +1,33 @@
+extends Node2D
+
+const HAZARD = preload("uid://d1mn45ydc6cma")
+
+var is_holding_item := false
+var held_item: Node2D
+
+@onready var click_cooldown: Timer = $"Click Cooldown"
+
+func _item_picked(_a, _b):
+	var n := HAZARD.instantiate() as Node2D
+	add_child(n)
+	held_item = n
+	is_holding_item = true
+	click_cooldown.start() # avoid accidentally immediately placing on click
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	SignalBus.trap_picked.connect(_item_picked)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	position = get_viewport().get_mouse_position()
+	if is_holding_item and Input.is_action_just_pressed("click") and click_cooldown.is_stopped():
+		is_holding_item = false
+		# HACK
+		remove_child(held_item)
+		get_parent().add_child(held_item)
+		held_item.position = position
+		held_item.activate()
+		held_item = null
+		
+		SignalBus.trap_placed.emit()

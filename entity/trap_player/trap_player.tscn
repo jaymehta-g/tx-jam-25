@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxx8suip6lkft"]
+
+[ext_resource type="Script" uid="uid://drpop0afsb235" path="res://entity/trap_player/trap_player.gd" id="1_a7w0u"]
+
+[node name="Trap Player" type="Node2D"]
+script = ExtResource("1_a7w0u")
+
+[node name="Click Cooldown" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

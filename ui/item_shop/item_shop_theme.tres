@@ -11,5 +11,5 @@ corner_radius_bottom_left = 40
 Label/colors/font_color = Color(0.91666675, 1, 0, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 8
-Label/font_sizes/font_size = 30
+Label/font_sizes/font_size = 50
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_pisfd")
