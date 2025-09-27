@@ -1,8 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
-@export var speed := 300.0
-var jump_vel := -1000.0
+@export var speed := 400.0
+var jump_vel := -1500.0
 var just_nailbounced := false
 
 var jump_input: bool = false
