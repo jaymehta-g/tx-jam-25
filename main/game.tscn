@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://dtoino2p3kn2d"]
+[gd_scene load_steps=8 format=4 uid="uid://dtoino2p3kn2d"]
 
 [ext_resource type="Script" uid="uid://cy3th56ol1oi3" path="res://main/game.gd" id="1_ph3h8"]
 [ext_resource type="PackedScene" uid="uid://c7jmq0wkpvmsn" path="res://entity/player/player.tscn" id="2_46yon"]
 [ext_resource type="Texture2D" uid="uid://ddtwgvf2qf7sf" path="res://icon.svg" id="3_vfw6y"]
+[ext_resource type="PackedScene" uid="uid://b6qfjh252ep2x" path="res://ui/item_shop/item_shop.tscn" id="4_46yon"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("3_vfw6y")
@@ -33,7 +34,10 @@ wait_time = 5.0
 autostart = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Traps Left: "
 label_settings = SubResource("LabelSettings_feb5d")
+
+[node name="Item Shop" parent="." instance=ExtResource("4_46yon")]

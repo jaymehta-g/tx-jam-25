@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdpjbgistk7k5"]
+
+[ext_resource type="Texture2D" uid="uid://ddtwgvf2qf7sf" path="res://icon.svg" id="1_ir3bd"]
+[ext_resource type="Script" uid="uid://cj374irxubgv7" path="res://ui/item_shop/item_display.gd" id="1_nt5xl"]
+[ext_resource type="Theme" uid="uid://d36lbu0jevudq" path="res://ui/item_shop/item_shop_theme.tres" id="2_jy7in"]
+[ext_resource type="Texture2D" uid="uid://bvxygjyswktie" path="res://ui/item_shop/progress.png" id="4_m6sha"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ir3bd"]
+
+[node name="Item Display" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 120)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_nt5xl")
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ir3bd")
+
+[node name="Filled Item Display" type="PanelContainer" parent="Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_jy7in")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ir3bd")
+
+[node name="ItemTextureRect" type="TextureRect" parent="Panel/Filled Item Display"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_ir3bd")
+
+[node name="PriceLabel" type="Label" parent="Panel/Filled Item Display"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "2"
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="New Item Progress" type="TextureProgressBar" parent="Panel/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+fill_mode = 4
+texture_progress = ExtResource("4_m6sha")
