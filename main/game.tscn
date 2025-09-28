@@ -49,6 +49,7 @@ position = Vector2(1195, 1078)
 shape = SubResource("RectangleShape2D_46yon")
 
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2(343, 0)
 anchor_mode = 0
 limit_left = 0
 limit_right = 1920

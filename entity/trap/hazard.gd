@@ -44,10 +44,11 @@ func damaged():
 	health -= 1
 	if health <= 0:
 		queue_free()
-	if Game.instance.running_player.node:
-		var dir := Game.instance.running_player.node.global_position \
-			- global_position
-		var n: GPUParticles2D = hit_effect.instantiate()
-		n.rotation = (-dir).angle()
-		add_child(n)
-		n.emitting = true
+	# if Game.instance.running_player.node:
+	# 	var dir := Game.instance.running_player.node.global_position \
+	# 		- global_position
+	# 	var n: GPUParticles2D = hit_effect.instantiate()
+	# 	# n.rotation = (-dir).angle()
+	# 	n.rotation = angle
+	# 	add_child(n)
+	# 	n.emitting = true
