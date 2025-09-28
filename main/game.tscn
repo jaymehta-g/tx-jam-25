@@ -25,7 +25,8 @@ script = ExtResource("1_ph3h8")
 z_index = 1
 position = Vector2(1045, 989)
 
-[node name="Item Shop" parent="." instance=ExtResource("4_46yon")]
+[node name="ItemShop" parent="." instance=ExtResource("4_46yon")]
+unique_name_in_owner = true
 
 [node name="Areas" type="Node2D" parent="."]
 
@@ -66,3 +67,5 @@ position = Vector2(800, -2160)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_jc0vi")
 autoplay = true
+
+[editable path="ItemShop"]
