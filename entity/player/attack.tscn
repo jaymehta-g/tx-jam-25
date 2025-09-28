@@ -1,21 +1,81 @@
-[gd_scene load_steps=3 format=3 uid="uid://fmrjol5xhkii"]
+[gd_scene load_steps=11 format=3 uid="uid://fmrjol5xhkii"]
 
 [ext_resource type="Script" uid="uid://dtw8gen6d7qxi" path="res://entity/player/attack.gd" id="1_hvxpb"]
-[ext_resource type="Texture2D" uid="uid://b73osdy4uijrh" path="res://entity/player/placehold attack.png" id="2_7f8cy"]
+[ext_resource type="Texture2D" uid="uid://cdn304j12ijd1" path="res://entity/player/staff_attack_sheet.png" id="2_7f8cy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6sue"]
+atlas = ExtResource("2_7f8cy")
+region = Rect2(0, 0, 106, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f35tk"]
+atlas = ExtResource("2_7f8cy")
+region = Rect2(106, 0, 106, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjvok"]
+atlas = ExtResource("2_7f8cy")
+region = Rect2(212, 0, 106, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di0e2"]
+atlas = ExtResource("2_7f8cy")
+region = Rect2(318, 0, 106, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nof5t"]
+atlas = ExtResource("2_7f8cy")
+region = Rect2(424, 0, 106, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yf3q"]
+atlas = ExtResource("2_7f8cy")
+region = Rect2(530, 0, 106, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi6ra"]
+atlas = ExtResource("2_7f8cy")
+region = Rect2(636, 0, 106, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lf5av"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6sue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f35tk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjvok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di0e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nof5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yf3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi6ra")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="Attack" type="Area2D"]
+z_index = -1
 script = ExtResource("1_hvxpb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+z_index = -1
+position = Vector2(-31, 15)
 polygon = PackedVector2Array(0, 0, 13, -14, 41, -22, 68, -13, 75, 5, 62, 14, 24, 15, 3, 4)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-autostart = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.21875, 1)
-texture = ExtResource("2_7f8cy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-32, -32)
+sprite_frames = SubResource("SpriteFrames_lf5av")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
 centered = false
-offset = Vector2(0, -16)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]

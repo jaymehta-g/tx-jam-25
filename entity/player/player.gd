@@ -24,6 +24,7 @@ const ATTACK = preload("uid://fmrjol5xhkii")
 
 @export var animation_debug := false
 var in_landing_animation := false
+var in_attack_animation := false
 
 func _ready() -> void:
 	SignalBus.player_hurt.connect(_on_hurt)
@@ -45,12 +46,18 @@ func _process(delta: float) -> void:
 	
 	jump_input_hold = Input.is_action_pressed("jump")
 	jump_input_just_pressed = Input.is_action_just_pressed("jump")
+	
 	if Input.is_action_just_pressed("attack"):
 		attack_input = true
+		in_attack_animation = true
+		anim_player.play("attack")
+		
 	if attack_input and attack_cooldown.is_stopped():
 		attack_cooldown.start()
 		attack_input = false
+		
 		var n := ATTACK.instantiate() as Node2D
+		
 		if Input.is_action_pressed("ui_down") and not is_on_floor():
 			n.rotation_degrees = 90
 			n.attack_hit.connect(_on_nailbounce) # only on down attack
@@ -58,7 +65,7 @@ func _process(delta: float) -> void:
 			n.rotation_degrees = -90
 			n.attack_hit.connect(func(): velocity.y = max(velocity.y, 0)) # push down on up attack
 		elif not last_direction_right:
-			n.rotation_degrees  = -180
+			n.scale.x  = -1
 		
 		add_child(n)
 
@@ -106,7 +113,7 @@ func do_animations():
 		if animation_debug: print("land")
 		in_landing_animation = true # set flag so that we dont start other animations till we done landing
 
-	elif not in_landing_animation:
+	elif not in_landing_animation and not in_attack_animation:
 		# if we are not playing the landing animation
 		if is_on_floor():
 			if abs(velocity.x) < 1:
@@ -128,7 +135,9 @@ func do_animations():
 		sprite_2d.flip_h = not last_direction_right
 
 
-# set flag for if we are finished with the landing animation
+# set flag for if we are finished with the  animation
 func _on_animation_finished(anim_name: StringName) -> void:
 	if in_landing_animation:
 		in_landing_animation = false
+	if in_attack_animation:
+		in_attack_animation = false
