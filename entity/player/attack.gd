@@ -14,9 +14,7 @@ func _process(delta: float) -> void:
 
 func _area_entered(n: Node2D):
 	if n.is_in_group(Groups.HAZARD):
-		n.health -= 1
-		if n.health <= 0:
-			n.queue_free()
+		n.damaged()
 		attack_hit.emit()
 
 

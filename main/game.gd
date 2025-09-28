@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 	if running_player.time_left <= 0:
 		player_out_of_time.emit(running_player)
 	
-	print_debug("p1 at %0.2f, p2 at %0.2f" % [players[0].time_left, players[1].time_left])
+	# print_debug("p1 at %0.2f, p2 at %0.2f" % [players[0].time_left, players[1].time_left])
 
 
 func _choose_scenes() -> void:
