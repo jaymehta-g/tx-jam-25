@@ -22,3 +22,5 @@ shape = SubResource("RectangleShape2D_6it88")
 [node name="right" type="CollisionShape2D" parent="Areas/Boundaries"]
 position = Vector2(1920, 555)
 shape = SubResource("SegmentShape2D_hl7ds")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
