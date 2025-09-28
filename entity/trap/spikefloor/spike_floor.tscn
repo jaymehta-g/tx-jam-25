@@ -9,7 +9,7 @@ size = Vector2(136, 13)
 [node name="Spike Floor" instance=ExtResource("1_k6klb")]
 
 [node name="Sprite2D" parent="." index="0"]
-rotation = 0.0
+scale = Vector2(1, 1)
 texture = ExtResource("2_kj44y")
 
 [node name="CollisionShape2D" parent="." index="1"]

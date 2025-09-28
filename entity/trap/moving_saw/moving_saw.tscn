@@ -9,4 +9,5 @@ script = ExtResource("2_5aswc")
 nodes_to_move = [NodePath("Sprite2D"), NodePath("CollisionShape2D")]
 
 [node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1, 1)
 texture = ExtResource("3_5aswc")
