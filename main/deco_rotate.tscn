@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqu5gx8l1rvat"]
+
+[ext_resource type="Script" uid="uid://crb2pr6w8c61" path="res://main/deco_rotate.gd" id="1_7r058"]
+
+[node name="DecoRotate" type="Node2D"]
+script = ExtResource("1_7r058")
