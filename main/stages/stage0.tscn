@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dkx3baoaaitp5"]
+[gd_scene load_steps=20 format=3 uid="uid://dkx3baoaaitp5"]
 
 [ext_resource type="Texture2D" uid="uid://vj5ydtmd8yga" path="res://main/assets/level_bg.png" id="1_kx6o5"]
 [ext_resource type="PackedScene" uid="uid://cl6itkwiv8ayl" path="res://main/stage.tscn" id="1_ovafg"]
 [ext_resource type="Texture2D" uid="uid://bs0q1dvv84uqc" path="res://main/assets/level_platforms.png" id="2_h8cbb"]
-[ext_resource type="PackedScene" uid="uid://c7jmq0wkpvmsn" path="res://entity/player/player.tscn" id="2_nunqu"]
 [ext_resource type="PackedScene" uid="uid://bqu5gx8l1rvat" path="res://main/deco_rotate.tscn" id="4_rn5p5"]
 [ext_resource type="Texture2D" uid="uid://ftxy4tff11uh" path="res://main/assets/big_gear1.png" id="5_jo4rj"]
 [ext_resource type="Texture2D" uid="uid://bl1a7vyo2v25r" path="res://main/assets/big_gear4.png" id="6_jo4rj"]
@@ -250,9 +249,6 @@ scale = Vector2(4.2799997, 4.2799997)
 position = Vector2(153.03738, 73.83178)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_lc84g")
-
-[node name="Player" parent="." instance=ExtResource("2_nunqu")]
-position = Vector2(486, 648)
 
 [node name="gears_foreground" type="Node2D" parent="."]
 
