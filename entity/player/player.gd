@@ -21,6 +21,7 @@ const ATTACK = preload("uid://fmrjol5xhkii")
 @onready var attack_cooldown: Timer = $"Attack Cooldown"
 @onready var anim_player: AnimationPlayer = $"AnimationPlayer"
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var hurt_sfx := $"Hurt Sound" as AudioStreamPlayer
 
 @export var animation_debug := false
 var in_landing_animation := false
@@ -103,6 +104,7 @@ func _on_nailbounce():
 	just_nailbounced = true
 
 func _on_hurt(): # This called from hazard and SignalBus
+	hurt_sfx.play(0.03)
 	position = Vector2(900, 300) # TODO
 	
 func do_animations():
