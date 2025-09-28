@@ -23,6 +23,8 @@ var trapping_player = players[1]
 func _ready() -> void:
 	assert(not instance)
 	instance = self
+	# hacky?
+	tree_exiting.connect(func(): instance = null)
 	
 	for x in players: x.time_left = 5*60
 	running_player.node = $Player
