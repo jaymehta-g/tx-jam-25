@@ -68,18 +68,11 @@ func _choose_scenes() -> void:
 	stages.shuffle()
 	stages = stages.slice(0, 3, 1, true)
 	# need to add floor to 1st stage always - bectter way to do this ? 
-	var first_scene = stages.pop_at(0)
-	var first_room = first_scene.instantiate()
-	var pos = first_room.global_position.y
-	first_room.add_to_group("Rooms")
-	add_child(first_room)
-	
-	#var pos := 0.0
-	# add the remaining 
+	var pos = 0
 	for stage in stages:
 		var room = stage.instantiate()
-		pos -= stage_y_size
 		room.global_position.y = pos
+		pos -= stage_y_size
 		room.add_to_group("Rooms")
 		add_child(room)
 
