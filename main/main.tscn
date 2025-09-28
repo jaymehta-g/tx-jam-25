@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://c15njebbkswg3"]
+[gd_scene load_steps=9 format=3 uid="uid://c15njebbkswg3"]
 
-[ext_resource type="Script" path="res://main/main.gd" id="1_xwkvk"]
+[ext_resource type="Script" uid="uid://cldp5cw5tnql6" path="res://main/main.gd" id="1_xwkvk"]
 [ext_resource type="Script" uid="uid://b8k71qwwths4x" path="res://util/fsm.gd" id="2_c651c"]
 [ext_resource type="Script" uid="uid://dddbs7okjk8hs" path="res://ui/main_menu/main_menu_main_state.gd" id="3_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://b5wbpuavslyaw" path="res://ui/main_menu/main_menu.tscn" id="4_c651c"]
 [ext_resource type="Script" uid="uid://oxybn5ffu77a" path="res://main/ingame_main_state.gd" id="5_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://dtoino2p3kn2d" path="res://main/game.tscn" id="6_kfbq2"]
+[ext_resource type="Script" uid="uid://7jaaqw4tyawb" path="res://main/player_swap_main_state.gd" id="7_4dugh"]
+[ext_resource type="PackedScene" uid="uid://cou283oxojq48" path="res://ui/player_swap/Player Swap.tscn" id="8_67ri8"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_xwkvk")
@@ -21,6 +23,11 @@ script = ExtResource("3_3wy1v")
 game_state = NodePath("../Game")
 menu_scene = ExtResource("4_c651c")
 
-[node name="Game" type="Node" parent="FSM"]
+[node name="Game" type="Node" parent="FSM" node_paths=PackedStringArray("swap_state")]
 script = ExtResource("5_3wy1v")
+swap_state = NodePath("../Player Swap")
 game_scene = ExtResource("6_kfbq2")
+
+[node name="Player Swap" type="Node" parent="FSM"]
+script = ExtResource("7_4dugh")
+ui_scene = ExtResource("8_67ri8")
