@@ -5,3 +5,5 @@ signal trap_picked(type: TrapInfo)
 signal trap_placed
 
 signal player_hurt
+
+signal goal_reached
