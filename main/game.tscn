@@ -21,7 +21,7 @@ size = Vector2(1620, 40)
 script = ExtResource("1_ph3h8")
 
 [node name="Player" parent="." instance=ExtResource("2_46yon")]
-position = Vector2(1185, 1026)
+position = Vector2(1045, 989)
 
 [node name="Item Shop" parent="." instance=ExtResource("4_46yon")]
 

@@ -15,6 +15,8 @@ var last_direction_right := true
 var was_on_floor := true
 var just_landed := false
 
+var checkpoint_position: Vector2
+
 const ATTACK = preload("uid://fmrjol5xhkii")
 
 @onready var jump_cooldown: Timer = $"Jump Cooldown"
@@ -29,6 +31,8 @@ var in_attack_animation := false
 
 func _ready() -> void:
 	SignalBus.player_hurt.connect(_on_hurt)
+	SignalBus.checkpoint_hit.connect(_on_checkpoint)
+	checkpoint_position = Vector2(1045, 989)
 
 func _process(delta: float) -> void:
 	
@@ -105,7 +109,10 @@ func _on_nailbounce():
 
 func _on_hurt(): # This called from hazard and SignalBus
 	hurt_sfx.play(0.03)
-	position = Vector2(900, 300) # TODO
+	position = checkpoint_position
+
+func _on_checkpoint(p :Vector2):
+	checkpoint_position = p
 	
 func do_animations():
 	
