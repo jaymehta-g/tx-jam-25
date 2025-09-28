@@ -9,8 +9,11 @@ var held_item: Node2D
 @onready var click_cooldown: Timer = $"Click Cooldown"
 
 func _item_picked(trap: TrapInfo):
-	var n := trap.scene.instantiate() as Node2D
+	if Game.instance.trapping_player.time_left <= trap.cost:
+		# TODO error sound?
+		return
 	Game.instance.trapping_player.time_left -= trap.cost
+	var n := trap.scene.instantiate() as Node2D
 	add_child(n)
 	held_item = n
 	is_holding_item = true
