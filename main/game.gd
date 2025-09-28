@@ -14,6 +14,7 @@ const stage_y_size = 1080
 @onready var stage0:PackedScene = preload("res://main/stages/stage0.tscn")
 @onready var stage1:PackedScene = preload("res://main/stages/stage1.tscn")
 @onready var stage2:PackedScene = preload("res://main/stages/stage2.tscn")
+@onready var end_stage:PackedScene = preload("res://main/stages/end_stage.tscn")
 @onready var total_stages:Array = [stage0, stage1, stage2]
 
 var players: Array[PlayerInfo]:
@@ -67,7 +68,6 @@ func _choose_scenes() -> void:
 	var stages = total_stages.duplicate()
 	stages.shuffle()
 	stages = stages.slice(0, 3, 1, true)
-	# need to add floor to 1st stage always - bectter way to do this ? 
 	var pos = 0
 	for stage in stages:
 		var room = stage.instantiate()
@@ -75,6 +75,11 @@ func _choose_scenes() -> void:
 		pos -= stage_y_size
 		room.add_to_group("Rooms")
 		add_child(room)
+	# add end stage last always
+	var end = end_stage.instantiate()
+	end.global_position.y = pos
+	end.add_to_group("Rooms")
+	add_child(end)
 
 func _on_goal_reached():
 	should_count_down_timer = false
