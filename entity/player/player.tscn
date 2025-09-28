@@ -284,6 +284,8 @@ _data = {
 scale = Vector2(2, 2)
 collision_mask = 31
 script = ExtResource("1_onrkg")
+walk_speed = 400.0
+run_speed = 500.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -301,12 +303,8 @@ frame = 1
 position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="Jump Cooldown" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
 [node name="Attack Cooldown" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.4
 one_shot = true
 
 [node name="Hurt Sound" type="AudioStreamPlayer" parent="."]
