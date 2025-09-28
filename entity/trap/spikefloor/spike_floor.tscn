@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://utuucu7wduej"]
 
 [ext_resource type="PackedScene" uid="uid://d1mn45ydc6cma" path="res://entity/trap/hazard.tscn" id="1_k6klb"]
-[ext_resource type="Texture2D" uid="uid://b410fa0mmfb1h" path="res://entity/trap/spikefloor/placehold.png" id="2_kj44y"]
+[ext_resource type="Texture2D" uid="uid://ovlkrbkpofpb" path="res://entity/trap/spikefloor/SpikePlatform001.png" id="2_k6klb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1d5dv"]
-size = Vector2(136, 13)
+size = Vector2(204, 8)
 
 [node name="Spike Floor" instance=ExtResource("1_k6klb")]
 
 [node name="Sprite2D" parent="." index="0"]
-rotation = 0.0
-texture = ExtResource("2_kj44y")
+scale = Vector2(1, 1)
+texture = ExtResource("2_k6klb")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 8.5)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_1d5dv")
