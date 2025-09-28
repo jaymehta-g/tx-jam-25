@@ -1,6 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjs70r14hjn1q"]
+[gd_scene load_steps=14 format=3 uid="uid://bjs70r14hjn1q"]
 
 [ext_resource type="PackedScene" uid="uid://cl6itkwiv8ayl" path="res://main/stage.tscn" id="1_wynok"]
+[ext_resource type="Texture2D" uid="uid://vj5ydtmd8yga" path="res://main/assets/level_bg.png" id="2_eqd05"]
+[ext_resource type="PackedScene" uid="uid://bqu5gx8l1rvat" path="res://main/deco_rotate.tscn" id="3_kw72f"]
+[ext_resource type="Texture2D" uid="uid://ftxy4tff11uh" path="res://main/assets/big_gear1.png" id="4_is6eg"]
+[ext_resource type="Texture2D" uid="uid://bl1a7vyo2v25r" path="res://main/assets/big_gear4.png" id="5_yvq0n"]
+[ext_resource type="Texture2D" uid="uid://c056wv2o1ngkl" path="res://main/assets/small_gear3.png" id="6_7myst"]
+[ext_resource type="Texture2D" uid="uid://c53gigktxumrs" path="res://main/assets/hand1.png" id="7_4t110"]
+[ext_resource type="Texture2D" uid="uid://c6qxfuauuxoci" path="res://main/assets/hand2.png" id="8_mv2u1"]
+[ext_resource type="Texture2D" uid="uid://b7fxxvk2w1hvs" path="res://main/assets/big_gear2.png" id="9_7lyl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wynok"]
 size = Vector2(500, 50)
@@ -52,5 +60,112 @@ shape = SubResource("RectangleShape2D_i5xi5")
 [node name="CollisionShape_1x1_3" type="CollisionShape2D" parent="layout/StaticBody2D"]
 position = Vector2(1196, 405)
 shape = SubResource("RectangleShape2D_i5xi5")
+
+[node name="bg" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_eqd05")
+centered = false
+
+[node name="gears_mid" type="Node2D" parent="."]
+
+[node name="DecoRotate9" parent="gears_mid" instance=ExtResource("3_kw72f")]
+position = Vector2(955, 1063)
+
+[node name="Sprite2D" type="Sprite2D" parent="gears_mid/DecoRotate9"]
+position = Vector2(453, -477)
+texture = ExtResource("4_is6eg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="gears_mid/DecoRotate9"]
+position = Vector2(451, -473)
+rotation = 1.5723034
+scale = Vector2(2.1399999, 2.1399999)
+texture = ExtResource("8_mv2u1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="gears_mid/DecoRotate9"]
+position = Vector2(451, -473)
+rotation = 3.6854596
+scale = Vector2(2.1399999, 2.1399999)
+texture = ExtResource("7_4t110")
+
+[node name="DecoRotate14" parent="gears_mid" instance=ExtResource("3_kw72f")]
+position = Vector2(1840, 370)
+scale = Vector2(1.9200001, 1.9200001)
+
+[node name="Sprite2D" type="Sprite2D" parent="gears_mid/DecoRotate14"]
+texture = ExtResource("6_7myst")
+
+[node name="DecoRotate15" parent="gears_mid" instance=ExtResource("3_kw72f")]
+position = Vector2(1102, 767)
+scale = Vector2(1.9200001, 1.9200001)
+
+[node name="Sprite2D" type="Sprite2D" parent="gears_mid/DecoRotate15"]
+texture = ExtResource("6_7myst")
+
+[node name="DecoRotate17" parent="gears_mid" instance=ExtResource("3_kw72f")]
+position = Vector2(793, 547)
+scale = Vector2(1.9200001, 1.9200001)
+
+[node name="Sprite2D" type="Sprite2D" parent="gears_mid/DecoRotate17"]
+position = Vector2(-97.916664, 117.70833)
+texture = ExtResource("6_7myst")
+
+[node name="Sprite2D2" type="Sprite2D" parent="gears_mid/DecoRotate17"]
+position = Vector2(238.54166, -116.666664)
+texture = ExtResource("6_7myst")
+
+[node name="Sprite2D3" type="Sprite2D" parent="gears_mid/DecoRotate17"]
+position = Vector2(454.6875, -242.18748)
+texture = ExtResource("6_7myst")
+
+[node name="Sprite2D4" type="Sprite2D" parent="gears_mid/DecoRotate17"]
+position = Vector2(53.64582, 15.625015)
+texture = ExtResource("6_7myst")
+
+[node name="gears_foreground" type="Node2D" parent="."]
+
+[node name="DecoRotate22" parent="gears_foreground" instance=ExtResource("3_kw72f")]
+position = Vector2(99, 514)
+
+[node name="Sprite2D" type="Sprite2D" parent="gears_foreground/DecoRotate22"]
+position = Vector2(134, -354)
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("9_7lyl1")
+
+[node name="DecoRotate21" parent="gears_foreground" instance=ExtResource("3_kw72f")]
+position = Vector2(-129, 572)
+scale = Vector2(4.2799997, 4.2799997)
+
+[node name="Sprite2D" type="Sprite2D" parent="gears_foreground/DecoRotate21"]
+position = Vector2(112.149536, -129.43925)
+texture = ExtResource("6_7myst")
+
+[node name="DecoRotate20" parent="gears_foreground" instance=ExtResource("3_kw72f")]
+position = Vector2(-129, 572)
+scale = Vector2(4.2799997, 4.2799997)
+max_speed = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="gears_foreground/DecoRotate20"]
+position = Vector2(75.46729, -14.95327)
+texture = ExtResource("9_7lyl1")
+
+[node name="DecoRotate19" parent="gears_foreground" instance=ExtResource("3_kw72f")]
+position = Vector2(99, 514)
+min_speed = 10.0
+max_speed = 60.0
+
+[node name="Sprite2D" type="Sprite2D" parent="gears_foreground/DecoRotate19"]
+position = Vector2(143, 346)
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("9_7lyl1")
+
+[node name="DecoRotate10" parent="gears_foreground" instance=ExtResource("3_kw72f")]
+position = Vector2(395, 1022)
+scale = Vector2(1.9200001, 1.9200001)
+min_speed = 15.0
+max_speed = 65.0
+rotation_dir = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="gears_foreground/DecoRotate10"]
+texture = ExtResource("5_yvq0n")
 
 [editable path="stage_component"]
