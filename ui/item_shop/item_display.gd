@@ -32,6 +32,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	new_item_progress.value = 1.0 - (refresh_timer.time_left / refresh_timer.wait_time)
 
+# TODO prevent the display from doing anything if trapper cant afford it
 func _gui_input(event: InputEvent) -> void:
 	if disabled: return
 	if not refresh_timer.is_stopped(): return

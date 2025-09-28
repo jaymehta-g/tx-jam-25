@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b73osdy4uijrh" path="res://entity/player/placehold attack.png" id="2_7f8cy"]
 
 [node name="Attack" type="Area2D"]
+collision_mask = 16
 script = ExtResource("1_hvxpb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

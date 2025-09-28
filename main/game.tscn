@@ -58,4 +58,4 @@ script = ExtResource("4_3qcir")
 [node name="Trap Player" parent="." instance=ExtResource("4_vfw6y")]
 
 [node name="Goal" parent="." instance=ExtResource("6_3qcir")]
-position = Vector2(1481, 906)
+position = Vector2(800, -2160)

@@ -4,7 +4,7 @@ static var instance: Game:
 	get:
 		return Globals.game_node
 
-
+signal player_out_of_time(losing_player: PlayerInfo)
 
 const HAZARD = preload("uid://d1mn45ydc6cma")
 const max_rooms = 3
@@ -33,7 +33,7 @@ func _ready() -> void:
 	
 	# Initialize if we should
 	if Globals.should_initialize_player_stats:
-		for x in players: x.time_left = 5*60
+		for x in players: x.time_left = 300
 		Globals.round_number = 0
 		Globals.should_initialize_player_stats = false
 
@@ -56,6 +56,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if should_count_down_timer:
 		running_player.time_left -= delta
+	if running_player.time_left <= 0:
+		player_out_of_time.emit(running_player)
 	
 	print_debug("p1 at %0.2f, p2 at %0.2f" % [players[0].time_left, players[1].time_left])
 

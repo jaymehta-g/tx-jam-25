@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm3h6j0fhqdxl"]
+
+[ext_resource type="PackedScene" uid="uid://d1mn45ydc6cma" path="res://entity/trap/hazard.tscn" id="1_rpjxa"]
+[ext_resource type="Script" uid="uid://cor2xibbwdvga" path="res://entity/trap/wall/wall.gd" id="2_a0go3"]
+[ext_resource type="Texture2D" uid="uid://bl7vhme20cjn0" path="res://entity/trap/wall/Untitled.png" id="3_f2n3v"]
+[ext_resource type="Shape2D" uid="uid://caanjt4akyli" path="res://entity/trap/wall/shape.tres" id="4_aeogo"]
+
+[node name="Wall" instance=ExtResource("1_rpjxa")]
+script = ExtResource("2_a0go3")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_f2n3v")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = ExtResource("4_aeogo")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="4"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = ExtResource("4_aeogo")
