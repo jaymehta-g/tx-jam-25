@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://tekqnech2bt7" path="res://entity/trap/trap_info.gd" id="1_ppy0p"]
 [ext_resource type="PackedScene" uid="uid://utuucu7wduej" path="res://entity/trap/spikefloor/spike_floor.tscn" id="1_rvhg0"]
-[ext_resource type="Texture2D" uid="uid://b410fa0mmfb1h" path="res://entity/trap/spikefloor/placehold.png" id="3_4p4oa"]
+[ext_resource type="Texture2D" uid="uid://bymorb1t207pb" path="res://entity/trap/spikefloor/shop.png" id="3_rvhg0"]
 
 [resource]
 script = ExtResource("1_ppy0p")
 cost = 3.0
-sprite = ExtResource("3_4p4oa")
+sprite = ExtResource("3_rvhg0")
 scene = ExtResource("1_rvhg0")
 metadata/_custom_type_script = "uid://tekqnech2bt7"

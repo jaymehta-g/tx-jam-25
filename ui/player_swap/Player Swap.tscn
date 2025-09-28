@@ -1,11 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://cou283oxojq48"]
+[gd_scene load_steps=9 format=3 uid="uid://cou283oxojq48"]
 
 [ext_resource type="Script" uid="uid://c8dbi184f00ga" path="res://ui/player_swap/player_swap.gd" id="1_5p2in"]
+[ext_resource type="Texture2D" uid="uid://vj5ydtmd8yga" path="res://main/assets/level_bg.png" id="2_g87pb"]
 
-[node name="PlayerSwap" type="CanvasLayer"]
+[sub_resource type="LabelSettings" id="LabelSettings_g87pb"]
+font_size = 120
+font_color = Color(1, 1, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0.019607844, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4sr8h"]
+font_size = 120
+font_color = Color(1, 0, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0.019607844, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vaci6"]
+font_size = 120
+font_color = Color(0, 0, 1, 1)
+outline_size = 20
+outline_color = Color(0, 0.019607844, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kxc3m"]
+font_size = 120
+font_color = Color(0, 1, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0.019607844, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g87pb"]
+bg_color = Color(0.101960786, 0.09411765, 0.09411765, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_4sr8h"]
+default_font_size = 50
+Button/styles/normal = SubResource("StyleBoxFlat_g87pb")
+
+[node name="PlayerSwap" type="CanvasLayer" node_paths=PackedStringArray("p1_label", "p2_label", "next_player")]
 script = ExtResource("1_5p2in")
+p1_label = NodePath("PanelContainer/p1 time")
+p2_label = NodePath("PanelContainer/p2 time")
+next_player = NodePath("PanelContainer/next round")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_g87pb")
+stretch_mode = 4
+
+[node name="PanelContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,13 +60,32 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Swap Players placeholder
-"
+text = "Round Over!"
+label_settings = SubResource("LabelSettings_g87pb")
+
+[node name="p1 time" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Player 1 has"
+label_settings = SubResource("LabelSettings_4sr8h")
+
+[node name="p2 time" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Player 2 has"
+label_settings = SubResource("LabelSettings_vaci6")
+
+[node name="next round" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Next round: "
+label_settings = SubResource("LabelSettings_kxc3m")
 
 [node name="Next Round Button" type="Button" parent="PanelContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(700, 100)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 size_flags_vertical = 8
-text = "Next Round!"
+theme = SubResource("Theme_4sr8h")
+text = "Continue"
