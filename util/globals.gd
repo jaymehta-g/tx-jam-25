@@ -3,7 +3,7 @@ extends Node
 
 static var game_node: Game
 
-static var players: Array[PlayerInfo] = [preload("uid://cxg4y4vhfhqlb"), preload("uid://8rh52pobuejj")]
+static var players: Array[PlayerInfo] = [preload("res://entity/player/p1.tres"), preload("res://entity/player/p2.tres")]
 
 static var round_number := 0
 
