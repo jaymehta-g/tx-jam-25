@@ -14,6 +14,7 @@ hit_effect = ExtResource("3_n20cn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.3137255)
+z_index = 2
 texture = ExtResource("2_m8fgr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -22,6 +23,7 @@ disabled = true
 debug_color = Color(0.9867272, 0, 0.32543138, 0.41960785)
 
 [node name="Label" type="Label" parent="."]
+z_index = 4
 offset_left = -17.0
 offset_top = -11.0
 offset_right = 23.0
