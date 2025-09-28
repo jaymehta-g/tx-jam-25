@@ -16,6 +16,8 @@ func _item_picked(trap: TrapInfo):
 		audio_error.play()
 		return
 	Game.instance.trapping_player.time_left -= trap.cost
+	Game.instance.item_shop.score_label.text = "%ss" % Game.instance.trapping_player.time_left 
+
 	var n := trap.scene.instantiate() as Node2D
 	add_child(n)
 	held_item = n

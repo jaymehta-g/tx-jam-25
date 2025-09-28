@@ -4,6 +4,7 @@ extends Node2D
 @export var max_speed: float = 55.0  # maximum degrees per second
 
 @onready var sprite: Sprite2D = $Sprite2D
+@export var rotation_dir:int = [-1, 1].pick_random()
 
 var current_speed: float = 0.0
 
@@ -19,13 +20,13 @@ func _process(delta: float) -> void:
 
 func _set_random_rotation() -> void:
 	# Random direction: 1 = clockwise, -1 = counterclockwise
-	var direction: int
-	if randf_range(0, 1) < 0.5:
-		direction = 1   # clockwise
-	else:
-		direction = -1  # counterclockwise
+	#var direction: int
+	#if randf_range(0, 1) < 0.5:
+	#	direction = 1   # clockwise
+	#else:
+	#	direction = -1  # counterclockwise
 	
 	# Random speed within range
 	var speed := randf_range(min_speed, max_speed)
 	
-	current_speed = speed * direction
+	current_speed = speed * rotation_dir
