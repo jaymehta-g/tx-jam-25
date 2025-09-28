@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkfni4vv7sox1"]
-
-[ext_resource type="Script" uid="uid://cbxjn3k4stegh" path="res://server.gd" id="1_ob30c"]
-
-[node name="Server" type="Node"]
-script = ExtResource("1_ob30c")
-metadata/_custom_type_script = "uid://cbxjn3k4stegh"

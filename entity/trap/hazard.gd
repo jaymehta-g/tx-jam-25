@@ -9,6 +9,9 @@ extends Area2D
 var health := 3
 var is_activated := false
 
+# walls can set this false
+var deadly := true
+
 signal activated
 
 func activate():
@@ -32,6 +35,6 @@ func _activate_timer_ready():
 	collision_shape_2d.disabled = false
 
 func _collision(b: Node2D):
-	if b is Player:
+	if b is Player and deadly:
 		print_debug("you died lol")
 		SignalBus.player_hurt.emit()

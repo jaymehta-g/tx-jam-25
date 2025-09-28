@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TrapInfo" load_steps=4 format=3 uid="uid://b5upcvhvgmbvw"]
+
+[ext_resource type="PackedScene" uid="uid://dcw0bqxbygri8" path="res://entity/trap/bomb/bomb.tscn" id="1_f68r0"]
+[ext_resource type="Script" uid="uid://tekqnech2bt7" path="res://entity/trap/trap_info.gd" id="1_fpnwn"]
+[ext_resource type="Texture2D" uid="uid://cp45jcemxnh0" path="res://entity/trap/bomb/Untitled.png" id="3_h5kxo"]
+
+[resource]
+script = ExtResource("1_fpnwn")
+cost = 10.0
+sprite = ExtResource("3_h5kxo")
+scene = ExtResource("1_f68r0")
+metadata/_custom_type_script = "uid://tekqnech2bt7"

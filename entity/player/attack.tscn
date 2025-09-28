@@ -61,6 +61,7 @@ animations = [{
 }]
 
 [node name="Attack" type="Area2D"]
+collision_mask = 16
 z_index = -1
 script = ExtResource("1_hvxpb")
 
