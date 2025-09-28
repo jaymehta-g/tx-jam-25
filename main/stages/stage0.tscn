@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkx3baoaaitp5"]
+[gd_scene load_steps=7 format=3 uid="uid://dkx3baoaaitp5"]
 
 [ext_resource type="PackedScene" uid="uid://cl6itkwiv8ayl" path="res://main/stage.tscn" id="1_ovafg"]
-[ext_resource type="PackedScene" uid="uid://c7jmq0wkpvmsn" path="res://entity/player/player.tscn" id="2_nunqu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4knj"]
 size = Vector2(500, 50)
@@ -36,10 +35,6 @@ position = Vector2(699, 1030)
 shape = SubResource("RectangleShape2D_j4knj")
 
 [node name="CollisionShape_10x1_2" type="CollisionShape2D" parent="layout/StaticBody2D"]
-position = Vector2(1580, 1032)
-shape = SubResource("RectangleShape2D_j4knj")
-
-[node name="CollisionShape_10x1_3" type="CollisionShape2D" parent="layout/StaticBody2D"]
 position = Vector2(1580, 1032)
 shape = SubResource("RectangleShape2D_j4knj")
 
@@ -91,8 +86,5 @@ shape = SubResource("RectangleShape2D_h8cbb")
 position = Vector2(891, 743)
 rotation = -0.002070276
 shape = SubResource("RectangleShape2D_10p7l")
-
-[node name="Player" parent="." instance=ExtResource("2_nunqu")]
-position = Vector2(915, 892)
 
 [editable path="stage_component"]
