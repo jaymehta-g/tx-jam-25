@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjs70r14hjn1q"]
+[gd_scene load_steps=6 format=3 uid="uid://bjs70r14hjn1q"]
 
 [ext_resource type="PackedScene" uid="uid://cl6itkwiv8ayl" path="res://main/stage.tscn" id="1_wynok"]
 
@@ -14,17 +14,12 @@ size = Vector2(100, 100)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5xi5"]
 size = Vector2(50, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bfp3"]
-size = Vector2(1000, 50)
-
 [node name="Stage2" type="Node2D"]
 
 [node name="stage_component" parent="." instance=ExtResource("1_wynok")]
 
-[node name="SpawnPoint" parent="stage_component" index="1"]
-position = Vector2(1579, 911)
-
 [node name="layout" type="Node2D" parent="."]
+position = Vector2(-1, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="layout"]
 collision_layer = 2
@@ -35,12 +30,8 @@ position = Vector2(699, 660)
 shape = SubResource("RectangleShape2D_wynok")
 
 [node name="CollisionShape_10x1_2" type="CollisionShape2D" parent="layout/StaticBody2D"]
-position = Vector2(1581, 1002)
+position = Vector2(1581, 950)
 shape = SubResource("RectangleShape2D_wynok")
-
-[node name="CollisionShape_5x1_4" type="CollisionShape2D" parent="layout/StaticBody2D"]
-position = Vector2(2767, 370)
-shape = SubResource("RectangleShape2D_eqd05")
 
 [node name="CollisionShape_5x1_3" type="CollisionShape2D" parent="layout/StaticBody2D"]
 position = Vector2(1592, 205)
@@ -61,10 +52,5 @@ shape = SubResource("RectangleShape2D_i5xi5")
 [node name="CollisionShape_1x1_3" type="CollisionShape2D" parent="layout/StaticBody2D"]
 position = Vector2(1196, 405)
 shape = SubResource("RectangleShape2D_i5xi5")
-
-[node name="CollisionShape_20x1_1" type="CollisionShape2D" parent="layout/StaticBody2D"]
-position = Vector2(2732, 621)
-rotation = -0.002070276
-shape = SubResource("RectangleShape2D_2bfp3")
 
 [editable path="stage_component"]

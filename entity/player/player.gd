@@ -8,8 +8,6 @@ var jump_vel := -1500.0
 var just_nailbounced := false
 
 var sprinting := false
-var jump_input_hold: bool = false
-var jump_input_just_pressed: bool = false
 var attack_input := false
 var last_direction_right := true
 var was_on_floor := true
@@ -47,10 +45,6 @@ func _process(delta: float) -> void:
 	else:
 		velocity.x = inp * walk_speed
 	
-	
-	jump_input_hold = Input.is_action_pressed("jump")
-	jump_input_just_pressed = Input.is_action_just_pressed("jump")
-	
 	if Input.is_action_just_pressed("attack"):
 		attack_input = true
 		in_attack_animation = true
@@ -83,19 +77,16 @@ func _physics_process(delta: float) -> void:
 			just_landed = true # if not on floor we are just landing
 		else:
 			just_landed = false # still on the floor
-			
-		velocity.y == 0
+				
+		velocity.y = 0
+
+		if Input.is_action_just_pressed("jump"): velocity.y += jump_vel
 	else:
 		velocity.y += 3000 * delta # gravity?
 		
-		# pressed jump key
-	if jump_input_just_pressed and is_on_floor(): # and jump_cooldown.is_stopped():
-		jump_input_just_pressed = false
-		velocity.y += jump_vel # jump
-
 	if velocity.y > 0:
 		just_nailbounced = false # clear this state when you start falling
-	if (not jump_input_hold) and velocity.y < 0 and not just_nailbounced: # hollowknight like immediate fall when you let go of jump
+	if (not Input.is_action_pressed("jump")) and velocity.y < 0 and not just_nailbounced: # hollowknight like immediate fall when you let go of jump
 		velocity.y = 0
 		
 	was_on_floor = is_on_floor() # update current frame to if we are on the floor rn

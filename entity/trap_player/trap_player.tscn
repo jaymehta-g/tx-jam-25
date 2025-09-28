@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxx8suip6lkft"]
+[gd_scene load_steps=7 format=3 uid="uid://bxx8suip6lkft"]
 
 [ext_resource type="Script" uid="uid://drpop0afsb235" path="res://entity/trap_player/trap_player.gd" id="1_a7w0u"]
 [ext_resource type="Script" uid="uid://tekqnech2bt7" path="res://entity/trap/trap_info.gd" id="2_evh0o"]
 [ext_resource type="Resource" uid="uid://b6w7n6c6mv4s4" path="res://entity/trap/spikeball/spikeball.tres" id="3_amdb0"]
 [ext_resource type="Resource" uid="uid://dwvwssnagbyp1" path="res://entity/trap/spikefloor/spikefloor.tres" id="4_anjf8"]
+[ext_resource type="AudioStream" uid="uid://cj88ggdthuetg" path="res://sound/MenuGoBack.mp3" id="5_anjf8"]
+[ext_resource type="AudioStream" uid="uid://tra42fwm4d5m" path="res://sound/MenuConfirm.mp3" id="6_t0r58"]
 
 [node name="Trap Player" type="Node2D"]
 script = ExtResource("1_a7w0u")
@@ -12,3 +14,9 @@ traps = Array[ExtResource("2_evh0o")]([ExtResource("3_amdb0"), ExtResource("4_an
 [node name="Click Cooldown" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="AudioError" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_anjf8")
+
+[node name="AudioConfirm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_t0r58")
