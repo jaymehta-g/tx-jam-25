@@ -1,17 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6qfjh252ep2x"]
+[gd_scene load_steps=4 format=3 uid="uid://b6qfjh252ep2x"]
 
 [ext_resource type="Script" uid="uid://b4s7st0mbwawv" path="res://ui/item_shop/item_shop.gd" id="1_1warv"]
 [ext_resource type="Theme" uid="uid://d36lbu0jevudq" path="res://ui/item_shop/item_shop_theme.tres" id="1_rmute"]
 [ext_resource type="PackedScene" uid="uid://cdpjbgistk7k5" path="res://ui/item_shop/item_display.tscn" id="2_1warv"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_pvivc"]
-font_size = 32
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-
 [node name="Item Shop" type="CanvasLayer" node_paths=PackedStringArray("shop_displays")]
 script = ExtResource("1_1warv")
-shop_displays = [NodePath("PanelContainer/Control/Item Display"), NodePath("PanelContainer/Control/Item Display2"), NodePath("PanelContainer/Control/Item Display3"), NodePath("PanelContainer/Control/Item Display4")]
+shop_displays = [NodePath("PanelContainer/CenterContainer/Control/Item Display"), NodePath("PanelContainer/CenterContainer/Control/Item Display2"), NodePath("PanelContainer/CenterContainer/Control/Item Display3"), NodePath("PanelContainer/CenterContainer/Control/Item Display4")]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
@@ -24,29 +19,23 @@ grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("1_rmute")
 
-[node name="Control" type="VBoxContainer" parent="PanelContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Control" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
 layout_mode = 2
 theme = ExtResource("1_rmute")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/Control"]
-custom_minimum_size = Vector2(0, 83.055)
+[node name="Item Display" parent="PanelContainer/CenterContainer/Control" instance=ExtResource("2_1warv")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Control/MarginContainer"]
-layout_mode = 2
-text = "P2 Timer"
-label_settings = SubResource("LabelSettings_pvivc")
-horizontal_alignment = 1
-
-[node name="Item Display" parent="PanelContainer/Control" instance=ExtResource("2_1warv")]
+[node name="Item Display2" parent="PanelContainer/CenterContainer/Control" instance=ExtResource("2_1warv")]
 layout_mode = 2
 
-[node name="Item Display2" parent="PanelContainer/Control" instance=ExtResource("2_1warv")]
+[node name="Item Display3" parent="PanelContainer/CenterContainer/Control" instance=ExtResource("2_1warv")]
 layout_mode = 2
 
-[node name="Item Display3" parent="PanelContainer/Control" instance=ExtResource("2_1warv")]
-layout_mode = 2
-
-[node name="Item Display4" parent="PanelContainer/Control" instance=ExtResource("2_1warv")]
+[node name="Item Display4" parent="PanelContainer/CenterContainer/Control" instance=ExtResource("2_1warv")]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
