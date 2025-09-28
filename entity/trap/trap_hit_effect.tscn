@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx2r076gxp00t"]
+
+[ext_resource type="Texture2D" uid="uid://c41m0jbg7su1v" path="res://entity/trap/particle.png" id="1_bkad6"]
+
+[sub_resource type="Gradient" id="Gradient_4j7p7"]
+offsets = PackedFloat32Array(0, 0.7861635, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bkad6"]
+gradient = SubResource("Gradient_4j7p7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ajnmj"]
+particle_flag_disable_z = true
+spread = 16.736
+initial_velocity_min = 30.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+color_ramp = SubResource("GradientTexture1D_bkad6")
+
+[node name="Trap Hit Effect" type="GPUParticles2D"]
+scale = Vector2(5, 5)
+emitting = false
+amount = 50
+texture = ExtResource("1_bkad6")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ajnmj")

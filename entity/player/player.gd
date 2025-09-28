@@ -15,9 +15,10 @@ var last_direction_right := true
 var was_on_floor := true
 var just_landed := false
 
+var checkpoint_position: Vector2
+
 const ATTACK = preload("uid://fmrjol5xhkii")
 
-@onready var jump_cooldown: Timer = $"Jump Cooldown"
 @onready var attack_cooldown: Timer = $"Attack Cooldown"
 @onready var anim_player: AnimationPlayer = $"AnimationPlayer"
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -29,6 +30,8 @@ var in_attack_animation := false
 
 func _ready() -> void:
 	SignalBus.player_hurt.connect(_on_hurt)
+	SignalBus.checkpoint_hit.connect(_on_checkpoint)
+	checkpoint_position = Vector2(1045, 989)
 
 func _process(delta: float) -> void:
 	
@@ -61,9 +64,12 @@ func _process(delta: float) -> void:
 		
 		if Input.is_action_pressed("ui_down") and not is_on_floor():
 			n.rotation_degrees = 90
+			n.position += Vector2(15, 50)
 			n.attack_hit.connect(_on_nailbounce) # only on down attack
 		elif Input.is_action_pressed("ui_up"):
 			n.rotation_degrees = -90
+			if not last_direction_right:
+				n.scale.y = -1
 			n.attack_hit.connect(func(): velocity.y = max(velocity.y, 0)) # push down on up attack
 		elif not last_direction_right:
 			n.scale.x  = -1
@@ -85,7 +91,6 @@ func _physics_process(delta: float) -> void:
 		# pressed jump key
 	if jump_input_just_pressed and is_on_floor(): # and jump_cooldown.is_stopped():
 		jump_input_just_pressed = false
-		jump_cooldown.start()
 		velocity.y += jump_vel # jump
 
 	if velocity.y > 0:
@@ -105,7 +110,10 @@ func _on_nailbounce():
 
 func _on_hurt(): # This called from hazard and SignalBus
 	hurt_sfx.play(0.03)
-	position = Vector2(900, 300) # TODO
+	position = checkpoint_position
+
+func _on_checkpoint(p :Vector2):
+	checkpoint_position = p
 	
 func do_animations():
 	

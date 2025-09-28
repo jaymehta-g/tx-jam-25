@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1mn45ydc6cma"]
+[gd_scene load_steps=5 format=3 uid="uid://d1mn45ydc6cma"]
 
 [ext_resource type="Script" uid="uid://bec0g5u1xmxp6" path="res://entity/trap/hazard.gd" id="1_scxj1"]
 [ext_resource type="Texture2D" uid="uid://c5gt2nq5loe6u" path="res://entity/trap/placehold.png" id="2_m8fgr"]
+[ext_resource type="PackedScene" uid="uid://cx2r076gxp00t" path="res://entity/trap/trap_hit_effect.tscn" id="3_n20cn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gvr6k"]
 radius = 32.0
@@ -9,6 +10,7 @@ radius = 32.0
 [node name="Hazard" type="Area2D" groups=["Hazard"]]
 collision_layer = 16
 script = ExtResource("1_scxj1")
+hit_effect = ExtResource("3_n20cn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.3137255)

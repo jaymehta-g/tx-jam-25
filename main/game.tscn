@@ -21,7 +21,7 @@ size = Vector2(1620, 40)
 script = ExtResource("1_ph3h8")
 
 [node name="Player" parent="." instance=ExtResource("2_46yon")]
-position = Vector2(1185, 1026)
+position = Vector2(1045, 989)
 
 [node name="Item Shop" parent="." instance=ExtResource("4_46yon")]
 
@@ -49,6 +49,7 @@ position = Vector2(1195, 1078)
 shape = SubResource("RectangleShape2D_46yon")
 
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2(343, 0)
 anchor_mode = 0
 limit_left = 0
 limit_right = 1920

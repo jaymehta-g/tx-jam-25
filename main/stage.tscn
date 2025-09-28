@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cl6itkwiv8ayl"]
+[gd_scene load_steps=4 format=3 uid="uid://cl6itkwiv8ayl"]
+
+[ext_resource type="PackedScene" uid="uid://ci4vrnpes4yl7" path="res://entity/checkpoint/checkpoint.tscn" id="1_hl7ds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6it88"]
 size = Vector2(387, 1075.5)
@@ -24,3 +26,5 @@ position = Vector2(1920, 555)
 shape = SubResource("SegmentShape2D_hl7ds")
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
+
+[node name="Checkpoint" parent="SpawnPoint" instance=ExtResource("1_hl7ds")]
