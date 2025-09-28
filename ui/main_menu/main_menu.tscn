@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5wbpuavslyaw"]
+[gd_scene load_steps=6 format=3 uid="uid://b5wbpuavslyaw"]
 
 [ext_resource type="Script" uid="uid://cb6j37ue1nul2" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+[ext_resource type="StyleBox" uid="uid://muok3hpmih86" path="res://ui/main_menu/button_panel_theme.tres" id="2_mu8pm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhj5c"]
+bg_color = Color(0.7946989, 0.664112, 0.15165076, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mu8pm"]
+font_size = 256
+font_color = Color(1, 1, 0, 1)
+outline_size = 50
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.7764706)
+shadow_offset = Vector2(20, 20)
+
+[sub_resource type="Theme" id="Theme_omy8q"]
+Button/colors/font_color = Color(1, 1, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 48
+Button/styles/hover = ExtResource("2_mu8pm")
+Button/styles/normal = ExtResource("2_mu8pm")
+Button/styles/pressed = ExtResource("2_mu8pm")
 
 [node name="Main Menu" type="CanvasLayer"]
 script = ExtResource("1_uhj5c")
@@ -11,11 +32,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhj5c")
 
-[node name="Start Button" type="Button" parent="PanelContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 100)
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+text = "TowerGlass"
+label_settings = SubResource("LabelSettings_mu8pm")
+horizontal_alignment = 1
+
+[node name="Start Button" type="Button" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
+theme = SubResource("Theme_omy8q")
 text = "Start Game"
