@@ -4,8 +4,9 @@ signal attack_hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Timer.timeout.connect(queue_free)
+	#$Timer.timeout.connect(queue_free)
 	area_entered.connect(_area_entered)
+	z_index = get_parent().z_index - 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -17,3 +18,7 @@ func _area_entered(n: Node2D):
 		if n.health <= 0:
 			n.queue_free()
 		attack_hit.emit()
+
+
+func _on_animation_finished() -> void:
+	queue_free()
