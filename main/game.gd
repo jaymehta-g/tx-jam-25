@@ -1,6 +1,8 @@
 class_name Game
 extends Node2D
-static var instance: Game
+static var instance: Game:
+	get:
+		return Globals.game_node
 
 
 
@@ -14,15 +16,18 @@ const stage_y_size = 1080
 @onready var stage2:PackedScene = preload("res://main/stages/stage2.tscn")
 @onready var total_stages:Array = [stage0, stage1, stage2]
 
-var players: Array[PlayerInfo] = [preload("uid://cxg4y4vhfhqlb"), preload("uid://8rh52pobuejj")]
+var players: Array[PlayerInfo]:
+	get:
+		return Globals.players
 
 var running_player := players[0]
-var trapping_player = players[1]
+var trapping_player := players[1]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	assert(not instance)
-	instance = self
+	Globals.game_node = self
+	# hacky?
+	tree_exiting.connect(func(): Globals.game_node = null)
 	
 	for x in players: x.time_left = 5*60
 	running_player.node = $Player

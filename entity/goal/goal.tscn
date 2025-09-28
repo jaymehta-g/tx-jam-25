@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnl23l380ooka"]
+
+[ext_resource type="Script" uid="uid://3nenlis2sl01" path="res://entity/goal/goal.gd" id="1_xgm78"]
+[ext_resource type="Texture2D" uid="uid://renn0cp8wwlo" path="res://entity/goal/placehold.png" id="2_0u5g0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2c7eb"]
+radius = 24.083189
+
+[node name="Goal" type="Area2D"]
+script = ExtResource("1_xgm78")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0u5g0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2c7eb")

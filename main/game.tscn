@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtoino2p3kn2d"]
+[gd_scene load_steps=10 format=3 uid="uid://dtoino2p3kn2d"]
 
 [ext_resource type="Script" uid="uid://cy3th56ol1oi3" path="res://main/game.gd" id="1_ph3h8"]
 [ext_resource type="PackedScene" uid="uid://c7jmq0wkpvmsn" path="res://entity/player/player.tscn" id="2_46yon"]
 [ext_resource type="Script" uid="uid://cmsqskdp53c15" path="res://main/camera.gd" id="4_3qcir"]
 [ext_resource type="PackedScene" uid="uid://b6qfjh252ep2x" path="res://ui/item_shop/item_shop.tscn" id="4_46yon"]
 [ext_resource type="PackedScene" uid="uid://bxx8suip6lkft" path="res://entity/trap_player/trap_player.tscn" id="4_vfw6y"]
+[ext_resource type="PackedScene" uid="uid://cnl23l380ooka" path="res://entity/goal/goal.tscn" id="6_3qcir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fwfh"]
 size = Vector2(388, 1073.5)
@@ -55,3 +56,6 @@ limit_bottom = 1080
 script = ExtResource("4_3qcir")
 
 [node name="Trap Player" parent="." instance=ExtResource("4_vfw6y")]
+
+[node name="Goal" parent="." instance=ExtResource("6_3qcir")]
+position = Vector2(1481, 906)
