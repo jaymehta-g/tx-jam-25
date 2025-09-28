@@ -3,6 +3,9 @@ extends Node2D
 @export var traps: Array[TrapInfo]
 const HAZARD = preload("uid://d1mn45ydc6cma")
 
+@onready var audio_error:AudioStreamPlayer2D = $AudioError
+@onready var audio_confirm:AudioStreamPlayer2D = $AudioConfirm
+
 var is_holding_item := false
 var held_item: Node2D
 
@@ -10,13 +13,14 @@ var held_item: Node2D
 
 func _item_picked(trap: TrapInfo):
 	if Game.instance.trapping_player.time_left <= trap.cost:
-		# TODO error sound?
+		audio_error.play()
 		return
 	Game.instance.trapping_player.time_left -= trap.cost
 	var n := trap.scene.instantiate() as Node2D
 	add_child(n)
 	held_item = n
 	is_holding_item = true
+	audio_confirm.play()
 	click_cooldown.start() # avoid accidentally immediately placing on click
 
 # Called when the node enters the scene tree for the first time.
