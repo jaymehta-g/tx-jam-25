@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bjs70r14hjn1q"]
 
 [ext_resource type="PackedScene" uid="uid://cl6itkwiv8ayl" path="res://main/stage.tscn" id="1_wynok"]
+[ext_resource type="PackedScene" uid="uid://c7jmq0wkpvmsn" path="res://entity/player/player.tscn" id="2_eqd05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wynok"]
 size = Vector2(500, 50)
