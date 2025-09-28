@@ -28,6 +28,7 @@ script = ExtResource("5_3wy1v")
 swap_state = NodePath("../Player Swap")
 game_scene = ExtResource("6_kfbq2")
 
-[node name="Player Swap" type="Node" parent="FSM"]
+[node name="Player Swap" type="Node" parent="FSM" node_paths=PackedStringArray("game_state")]
 script = ExtResource("7_4dugh")
+game_state = NodePath("../Game")
 ui_scene = ExtResource("8_67ri8")

@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://cou283oxojq48"]
+[gd_scene load_steps=2 format=3 uid="uid://cou283oxojq48"]
+
+[ext_resource type="Script" uid="uid://c8dbi184f00ga" path="res://ui/player_swap/player_swap.gd" id="1_5p2in"]
 
 [node name="PlayerSwap" type="CanvasLayer"]
+script = ExtResource("1_5p2in")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -14,3 +17,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Swap Players placeholder
 "
+
+[node name="Next Round Button" type="Button" parent="PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Next Round!"

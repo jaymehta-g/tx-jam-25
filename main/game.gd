@@ -20,8 +20,10 @@ var players: Array[PlayerInfo]:
 	get:
 		return Globals.players
 
-var running_player := players[0]
-var trapping_player := players[1]
+var running_player: PlayerInfo
+var trapping_player: PlayerInfo
+
+var should_count_down_timer := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,14 +31,33 @@ func _ready() -> void:
 	# hacky?
 	tree_exiting.connect(func(): Globals.game_node = null)
 	
-	for x in players: x.time_left = 5*60
+	# Initialize if we should
+	if Globals.should_initialize_player_stats:
+		for x in players: x.time_left = 5*60
+		Globals.round_number = 0
+		Globals.should_initialize_player_stats = false
+
+	if Globals.round_number % 2 == 0:
+		running_player = players[0]
+		trapping_player = players[1]
+	else:
+		running_player = players[1]
+		trapping_player = players[0]
+
 	running_player.node = $Player
 	trapping_player.node = null
+	
+	should_count_down_timer = true
+
+	SignalBus.goal_reached.connect(_on_goal_reached)
 	
 	_choose_scenes()
 
 func _process(delta: float) -> void:
-	running_player.time_left -= delta
+	if should_count_down_timer:
+		running_player.time_left -= delta
+	
+	print_debug("p1 at %0.2f, p2 at %0.2f" % [players[0].time_left, players[1].time_left])
 
 
 func _choose_scenes() -> void:
@@ -59,3 +80,10 @@ func _choose_scenes() -> void:
 		room.global_position.y = pos
 		room.add_to_group("Rooms")
 		add_child(room)
+
+func _on_goal_reached():
+	should_count_down_timer = false
+	Globals.round_number += 1
+	# some round end effects and animation can happen here if wanted?
+
+	SignalBus.ready_to_end_round.emit()
