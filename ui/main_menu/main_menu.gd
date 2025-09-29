@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 signal start
-@onready var start_btn := %"Start Button" as Button
+@onready var start_btn := %"Start Button" as TextureButton
 @export var ui_sound: AudioStreamPlayer
 @export var fadeout: AnimationPlayer
 

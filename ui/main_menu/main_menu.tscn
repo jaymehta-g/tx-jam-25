@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://b5wbpuavslyaw"]
+[gd_scene load_steps=21 format=3 uid="uid://b5wbpuavslyaw"]
 
 [ext_resource type="Script" uid="uid://cb6j37ue1nul2" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
 [ext_resource type="Texture2D" uid="uid://vj5ydtmd8yga" path="res://main/assets/level_bg.png" id="2_joh67"]
 [ext_resource type="StyleBox" uid="uid://muok3hpmih86" path="res://ui/main_menu/button_panel_theme.tres" id="2_mu8pm"]
 [ext_resource type="AudioStream" uid="uid://cyc5nt5ud6wn5" path="res://sound/Title_Screen.mp3" id="3_omy8q"]
 [ext_resource type="AudioStream" uid="uid://tra42fwm4d5m" path="res://sound/MenuConfirm.mp3" id="4_i5wg5"]
+[ext_resource type="Texture2D" uid="uid://bvm10onw26l87" path="res://ui/main_menu/title_start_game.png" id="4_u184e"]
 [ext_resource type="Texture2D" uid="uid://mfj0k0rcwdie" path="res://ui/main_menu/title.png" id="5_3c04x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u184e"]
@@ -141,14 +142,19 @@ text = "TowerGlass"
 label_settings = SubResource("LabelSettings_mu8pm")
 horizontal_alignment = 1
 
-[node name="Start Button" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Start Button" type="TextureButton" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 100)
+custom_minimum_size = Vector2(500, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = SubResource("Theme_omy8q")
-text = "Start Game"
+texture_normal = ExtResource("4_u184e")
+texture_pressed = ExtResource("4_u184e")
+texture_hover = ExtResource("4_u184e")
+texture_disabled = ExtResource("4_u184e")
+texture_focused = ExtResource("4_u184e")
+stretch_mode = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_omy8q")
