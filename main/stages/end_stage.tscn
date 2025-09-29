@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cioxy4tdnfygn"]
+[gd_scene load_steps=16 format=3 uid="uid://cioxy4tdnfygn"]
 
 [ext_resource type="PackedScene" uid="uid://cl6itkwiv8ayl" path="res://main/stage.tscn" id="1_b7o63"]
 [ext_resource type="Texture2D" uid="uid://ds3x21kgn0cml" path="res://main/assets/end_bg.png" id="2_d3puq"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b7fxxvk2w1hvs" path="res://main/assets/big_gear2.png" id="10_a8w50"]
 [ext_resource type="Texture2D" uid="uid://po0eue7bvteg" path="res://main/assets/wizard.png" id="11_a8w50"]
 [ext_resource type="Texture2D" uid="uid://bectxi5pvbt1b" path="res://main/assets/end_time.png" id="12_co7qy"]
+[ext_resource type="PackedScene" uid="uid://cnl23l380ooka" path="res://entity/goal/goal.tscn" id="13_co7qy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b7o63"]
 size = Vector2(100, 100)
@@ -193,3 +194,6 @@ texture = ExtResource("12_co7qy")
 [node name="corpse3" type="Sprite2D" parent="Node2D"]
 position = Vector2(1267, 528)
 texture = ExtResource("12_co7qy")
+
+[node name="Goal" parent="." instance=ExtResource("13_co7qy")]
+position = Vector2(1268, 486)
