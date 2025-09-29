@@ -1,15 +1,27 @@
-[gd_scene format=3 uid="uid://b8pchcr34d50r"]
+[gd_scene load_steps=4 format=3 uid="uid://b8pchcr34d50r"]
 
-[node name="Game Over" type="CanvasLayer"]
+[ext_resource type="Script" uid="uid://c3wbxxy4y6xxt" path="res://ui/game_over/game_over.gd" id="1_5nexe"]
+[ext_resource type="Texture2D" uid="uid://btslokp8qcyby" path="res://ui/game_over/gameover.png" id="2_4cp6t"]
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="LabelSettings" id="LabelSettings_6lpyu"]
+font_size = 150
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Game Over placeholder"
+[node name="Game Over" type="CanvasLayer" node_paths=PackedStringArray("label")]
+script = ExtResource("1_5nexe")
+label = NodePath("Label")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_4cp6t")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+offset_left = 893.0
+offset_top = 718.0
+offset_right = 1737.0
+offset_bottom = 923.0
+text = "Player Wins"
+label_settings = SubResource("LabelSettings_6lpyu")

@@ -15,6 +15,9 @@ var just_landed := false
 
 var checkpoint_position: Vector2
 
+var invulnerable := false
+@onready var invuln_timer := $"Invulnerable Timer" as Timer
+
 const ATTACK = preload("uid://fmrjol5xhkii")
 
 @onready var attack_cooldown: Timer = $"Attack Cooldown"
@@ -29,6 +32,8 @@ const ATTACK = preload("uid://fmrjol5xhkii")
 @onready var hit2_sfx: AudioStreamPlayer2D = $HitAudio2
 @onready var hit3_sfx: AudioStreamPlayer2D = $HitAudio3
 
+@onready var blink_anim := $Blink as AnimationPlayer
+
 @export var animation_debug := false
 var in_landing_animation := false
 var in_attack_animation := false
@@ -37,6 +42,7 @@ func _ready() -> void:
 	SignalBus.player_hurt.connect(_on_hurt)
 	SignalBus.checkpoint_hit.connect(_on_checkpoint)
 	checkpoint_position = Vector2(1045, 989)
+	invuln_timer.timeout.connect(_on_invuln_timer_timeout)
 
 func _process(delta: float) -> void:
 	
@@ -108,8 +114,15 @@ func _on_nailbounce():
 	just_nailbounced = true
 
 func _on_hurt(): # This called from hazard and SignalBus
+	if invulnerable: return
+	invulnerable = true
 	hurt_sfx.play(0.03)
 	position = checkpoint_position
+	blink_anim.play("blink")
+	invuln_timer.start()
+
+func _on_invuln_timer_timeout():
+	invulnerable = false
 
 func _on_checkpoint(p :Vector2):
 	checkpoint_position = p
