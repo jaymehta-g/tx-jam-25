@@ -9,6 +9,10 @@ extends Node2D
 var current_speed: float = 0.0
 
 func _ready() -> void:
+	# Give gear a random starting angle (0–360 degrees)
+	if sprite:
+		sprite.rotation_degrees = randf_range(0.0, 360.0)
+	
 	_set_random_rotation()
 
 func _process(delta: float) -> void:
