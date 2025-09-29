@@ -3,12 +3,13 @@ extends Node2D
 @export var min_speed: float = 5.0   # minimum degrees per second
 @export var max_speed: float = 55.0  # maximum degrees per second
 
-@onready var sprite: Sprite2D = $Sprite2D
+var sprite: Sprite2D 
 @export var rotation_dir:int = [-1, 1].pick_random()
 
 var current_speed: float = 0.0
 
 func _ready() -> void:
+	sprite = get_node_or_null("Sprite2D")
 	# Give gear a random starting angle (0–360 degrees)
 	if sprite:
 		sprite.rotation_degrees = randf_range(0.0, 360.0)
