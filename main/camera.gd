@@ -14,4 +14,4 @@ func _process(delta: float) -> void:
 	var position_diff: float = desired_camera_y - position.y
 	if absf(position_diff) > camera_threshold:
 		position.y += (absf(position_diff) - camera_threshold) * 10.0 * delta * sign(position_diff)
-		position.y = min(position.y, 0)
+		position.y = clamp(position.y, -3240, 0)
