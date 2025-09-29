@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjs70r14hjn1q"]
+[gd_scene load_steps=17 format=3 uid="uid://bjs70r14hjn1q"]
 
 [ext_resource type="PackedScene" uid="uid://cl6itkwiv8ayl" path="res://main/stage.tscn" id="1_wynok"]
 [ext_resource type="Texture2D" uid="uid://dnmq8tpe3slue" path="res://main/assets/level2_bg.png" id="2_yvq0n"]
@@ -23,6 +23,9 @@ size = Vector2(100, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5xi5"]
 size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvq0n"]
+size = Vector2(111, 108)
 
 [node name="Stage2" type="Node2D"]
 
@@ -55,13 +58,9 @@ shape = SubResource("RectangleShape2D_4hj1y")
 position = Vector2(1309, 305)
 shape = SubResource("RectangleShape2D_i5xi5")
 
-[node name="CollisionShape_1x1_2" type="CollisionShape2D" parent="layout/StaticBody2D"]
-position = Vector2(1045, 529)
-shape = SubResource("RectangleShape2D_i5xi5")
-
 [node name="CollisionShape_1x1_3" type="CollisionShape2D" parent="layout/StaticBody2D"]
-position = Vector2(1196, 405)
-shape = SubResource("RectangleShape2D_i5xi5")
+position = Vector2(1165.5, 434)
+shape = SubResource("RectangleShape2D_yvq0n")
 
 [node name="bg" type="Sprite2D" parent="."]
 texture = ExtResource("2_yvq0n")

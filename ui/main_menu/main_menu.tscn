@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://b5wbpuavslyaw"]
+[gd_scene load_steps=20 format=3 uid="uid://b5wbpuavslyaw"]
 
 [ext_resource type="Script" uid="uid://cb6j37ue1nul2" path="res://ui/main_menu/main_menu.gd" id="1_uhj5c"]
+[ext_resource type="Texture2D" uid="uid://vj5ydtmd8yga" path="res://main/assets/level_bg.png" id="2_joh67"]
 [ext_resource type="StyleBox" uid="uid://muok3hpmih86" path="res://ui/main_menu/button_panel_theme.tres" id="2_mu8pm"]
 [ext_resource type="AudioStream" uid="uid://cyc5nt5ud6wn5" path="res://sound/Title_Screen.mp3" id="3_omy8q"]
 [ext_resource type="AudioStream" uid="uid://tra42fwm4d5m" path="res://sound/MenuConfirm.mp3" id="4_i5wg5"]
+[ext_resource type="Texture2D" uid="uid://mfj0k0rcwdie" path="res://ui/main_menu/title.png" id="5_3c04x"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhj5c"]
-bg_color = Color(0.7946989, 0.664112, 0.15165076, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u184e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mu8pm"]
 font_size = 256
@@ -25,21 +26,6 @@ Button/styles/hover = ExtResource("2_mu8pm")
 Button/styles/normal = ExtResource("2_mu8pm")
 Button/styles/pressed = ExtResource("2_mu8pm")
 
-[sub_resource type="Animation" id="Animation_i5wg5"]
-resource_name = "fadeout"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.56),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_3c04x"]
 length = 0.001
 tracks/0/type = "value"
@@ -55,16 +41,86 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_i5wg5"]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_joh67"]
 _data = {
 &"RESET": SubResource("Animation_3c04x"),
 &"fadeout": SubResource("Animation_i5wg5")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_joh67"]
+atlas = ExtResource("5_3c04x")
+region = Rect2(0, 0, 1223, 677)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u184e"]
+atlas = ExtResource("5_3c04x")
+region = Rect2(1223, 0, 1223, 677)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mijq"]
+atlas = ExtResource("5_3c04x")
+region = Rect2(2446, 0, 1223, 677)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2r0d"]
+atlas = ExtResource("5_3c04x")
+region = Rect2(3669, 0, 1223, 677)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e78x"]
+atlas = ExtResource("5_3c04x")
+region = Rect2(4892, 0, 1223, 677)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4pem"]
+atlas = ExtResource("5_3c04x")
+region = Rect2(6115, 0, 1223, 677)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xio0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joh67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u184e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mijq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2r0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e78x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4pem")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Main Menu" type="CanvasLayer" node_paths=PackedStringArray("ui_sound", "fadeout")]
 script = ExtResource("1_uhj5c")
 ui_sound = NodePath("UI Sound")
 fadeout = NodePath("Fadeout Animation")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_joh67")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
@@ -72,12 +128,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_uhj5c")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_u184e")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 800)
 layout_mode = 2
 text = "TowerGlass"
@@ -101,6 +158,7 @@ autoplay = true
 stream = ExtResource("4_i5wg5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = 999
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -113,3 +171,10 @@ color = Color(0, 0, 0, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_joh67")
 }
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1018, 648)
+scale = Vector2(1.755, 1.755)
+sprite_frames = SubResource("SpriteFrames_xio0d")
+autoplay = "default"
+frame_progress = 0.5446254
