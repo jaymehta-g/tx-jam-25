@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtoino2p3kn2d"]
+[gd_scene load_steps=12 format=3 uid="uid://dtoino2p3kn2d"]
 
 [ext_resource type="Script" uid="uid://cy3th56ol1oi3" path="res://main/game.gd" id="1_ph3h8"]
 [ext_resource type="PackedScene" uid="uid://c7jmq0wkpvmsn" path="res://entity/player/player.tscn" id="2_46yon"]
 [ext_resource type="Script" uid="uid://cmsqskdp53c15" path="res://main/camera.gd" id="4_3qcir"]
 [ext_resource type="PackedScene" uid="uid://b6qfjh252ep2x" path="res://ui/item_shop/item_shop.tscn" id="4_46yon"]
 [ext_resource type="PackedScene" uid="uid://bxx8suip6lkft" path="res://entity/trap_player/trap_player.tscn" id="4_vfw6y"]
+[ext_resource type="AudioStream" uid="uid://dkhjbalvqp1jh" path="res://sound/Level2.mp3" id="7_2c7eb"]
 [ext_resource type="AudioStream" uid="uid://dgubiqncms5ec" path="res://sound/Climb!.mp3" id="7_jc0vi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fwfh"]
@@ -16,6 +17,11 @@ b = Vector2(-1, 525)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46yon"]
 size = Vector2(1620, 40)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4u4fy"]
+streams_count = 2
+stream_0/stream = ExtResource("7_jc0vi")
+stream_1/stream = ExtResource("7_2c7eb")
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ph3h8")
@@ -61,7 +67,7 @@ script = ExtResource("4_3qcir")
 [node name="Trap Player" parent="." instance=ExtResource("4_vfw6y")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_jc0vi")
+stream = SubResource("AudioStreamRandomizer_4u4fy")
 autoplay = true
 
 [editable path="ItemShop"]

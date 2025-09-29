@@ -2,12 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://d1mn45ydc6cma" path="res://entity/trap/hazard.tscn" id="1_xtlil"]
 [ext_resource type="Script" uid="uid://dbpimfhyl1f3w" path="res://entity/trap/moving_saw/moving_saw.gd" id="2_5aswc"]
-[ext_resource type="Texture2D" uid="uid://buy40v6iqwhes" path="res://entity/trap/moving_saw/placehold.png" id="3_5aswc"]
+[ext_resource type="Texture2D" uid="uid://ds5h7x7t3fgfm" path="res://entity/trap/moving_saw/saw2.png" id="3_5aswc"]
 
 [node name="Moving Saw" node_paths=PackedStringArray("nodes_to_move") instance=ExtResource("1_xtlil")]
 script = ExtResource("2_5aswc")
 nodes_to_move = [NodePath("Sprite2D"), NodePath("CollisionShape2D")]
 
-[node name="Sprite2D" parent="." index="0"]
-scale = Vector2(1, 1)
+[node name="Line2D" type="Line2D" parent="." index="0"]
+points = PackedVector2Array(-200, 0, 200, 0)
+default_color = Color(0, 0, 0, 0.48235294)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.94, 0.94)
 texture = ExtResource("3_5aswc")

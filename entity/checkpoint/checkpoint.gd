@@ -1,8 +1,11 @@
 extends Area2D
 
+@export var touch_anim: AnimationPlayer
+
 func _ready() -> void:
     body_entered.connect(_on_body)
 
 func _on_body(n: Node2D):
     if not n.is_in_group(Groups.PLAYER_RUNNING): return
+    touch_anim.play("new_animation")
     SignalBus.checkpoint_hit.emit(global_position)

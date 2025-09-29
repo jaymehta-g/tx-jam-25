@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1mn45ydc6cma" path="res://entity/trap/hazard.tscn" id="1_rpjxa"]
 [ext_resource type="Script" uid="uid://cor2xibbwdvga" path="res://entity/trap/wall/wall.gd" id="2_a0go3"]
-[ext_resource type="Texture2D" uid="uid://bl7vhme20cjn0" path="res://entity/trap/wall/Untitled.png" id="3_f2n3v"]
+[ext_resource type="Texture2D" uid="uid://c6kdj4a2dr7n6" path="res://entity/trap/wall/Wall001.png" id="3_aeogo"]
 [ext_resource type="Shape2D" uid="uid://caanjt4akyli" path="res://entity/trap/wall/shape.tres" id="4_aeogo"]
 
 [node name="Wall" instance=ExtResource("1_rpjxa")]
@@ -10,7 +10,7 @@ script = ExtResource("2_a0go3")
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(1, 1)
-texture = ExtResource("3_f2n3v")
+texture = ExtResource("3_aeogo")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = ExtResource("4_aeogo")

@@ -10,6 +10,6 @@ func _process(delta: float) -> void:
 	if is_activated:
 		activated_time += delta
 		for n in nodes_to_move:
-			n.position.x = sin(activated_time/0.5) * 150
-		$Sprite2D.rotation = activated_time*15.0
+			n.position.x = sin(activated_time/0.5) * 200
+		$Sprite2D.rotation = activated_time*30.0
 	super._process(delta)

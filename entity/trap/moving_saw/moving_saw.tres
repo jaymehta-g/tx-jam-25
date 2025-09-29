@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bpgc558qekffg" path="res://entity/trap/moving_saw/moving_saw.tscn" id="1_3txur"]
 [ext_resource type="Script" uid="uid://tekqnech2bt7" path="res://entity/trap/trap_info.gd" id="1_7vwf7"]
-[ext_resource type="Texture2D" uid="uid://buy40v6iqwhes" path="res://entity/trap/moving_saw/placehold.png" id="3_3txur"]
+[ext_resource type="Texture2D" uid="uid://ds5h7x7t3fgfm" path="res://entity/trap/moving_saw/saw2.png" id="3_3txur"]
 
 [resource]
 script = ExtResource("1_7vwf7")
