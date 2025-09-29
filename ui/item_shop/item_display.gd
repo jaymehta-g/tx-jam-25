@@ -11,6 +11,9 @@ extends MarginContainer
 
 @onready var refresh_timer: Timer = $RefreshTimer
 
+@onready var audio_error:AudioStreamPlayer =$AudioError
+@onready var audio_confirm:AudioStreamPlayer = $AudioConfirm
+
 var held_trap: TrapInfo:
 	set(v):
 		held_trap = v

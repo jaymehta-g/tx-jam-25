@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdpjbgistk7k5"]
+[gd_scene load_steps=13 format=3 uid="uid://cdpjbgistk7k5"]
 
 [ext_resource type="Texture2D" uid="uid://ddtwgvf2qf7sf" path="res://icon.svg" id="1_ir3bd"]
 [ext_resource type="Script" uid="uid://cj374irxubgv7" path="res://ui/item_shop/item_display.gd" id="1_nt5xl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://dfxb6d2bo4oc" path="res://entity/trap/moving_saw/moving_saw.tres" id="5_ncawu"]
 [ext_resource type="Resource" uid="uid://u4f2un8tb1h1" path="res://entity/trap/wall/wall.tres" id="6_tx7rb"]
 [ext_resource type="Resource" uid="uid://b5upcvhvgmbvw" path="res://entity/trap/bomb/bomb.tres" id="7_btiax"]
+[ext_resource type="AudioStream" uid="uid://tra42fwm4d5m" path="res://sound/MenuConfirm.mp3" id="12_augjc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ir3bd"]
 
@@ -84,3 +85,9 @@ texture_progress = ExtResource("4_m6sha")
 [node name="RefreshTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="AudioError" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_augjc")
+
+[node name="AudioConfirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_augjc")

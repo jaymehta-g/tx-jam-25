@@ -21,6 +21,13 @@ const ATTACK = preload("uid://fmrjol5xhkii")
 @onready var anim_player: AnimationPlayer = $"AnimationPlayer"
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var hurt_sfx := $"Hurt Sound" as AudioStreamPlayer
+@onready var run_sfx: AudioStreamPlayer2D = $RunAudio
+@onready var walk_sfx: AudioStreamPlayer2D = $WalkAudio
+@onready var jump_sfx: AudioStreamPlayer2D = $JumpAudio
+@onready var jump2_sfx: AudioStreamPlayer2D = $Jump2Audio
+@onready var hit_sfx: AudioStreamPlayer2D = $HitAudio
+@onready var hit2_sfx: AudioStreamPlayer2D = $HitAudio2
+@onready var hit3_sfx: AudioStreamPlayer2D = $HitAudio3
 
 @export var animation_debug := false
 var in_landing_animation := false
@@ -49,6 +56,7 @@ func _process(delta: float) -> void:
 		attack_input = true
 		in_attack_animation = true
 		anim_player.play("attack")
+		[hit_sfx, hit2_sfx, hit3_sfx].pick_random().play()
 		
 	if attack_input and attack_cooldown.is_stopped():
 		attack_cooldown.start()
@@ -123,13 +131,16 @@ func do_animations():
 			elif sprinting:
 				anim_player.play("run")
 				if animation_debug: print("run")
+				run_sfx.play()
 			elif not sprinting:
 				anim_player.play("walk")
 				if animation_debug: print("walking")
+				walk_sfx.play()
 		else:
 			if velocity.y < 0:
 				anim_player.play("jump")
 				if animation_debug: print("jumping")
+				[jump_sfx, jump2_sfx].pick_random().play()
 			else: 
 				anim_player.play("fall")
 				if animation_debug: print("falling")
