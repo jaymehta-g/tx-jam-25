@@ -1,17 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6qfjh252ep2x"]
-
+[gd_scene load_steps=7 format=3 uid="uid://b6qfjh252ep2x"]
 
 [ext_resource type="Script" uid="uid://b4s7st0mbwawv" path="res://ui/item_shop/item_shop.gd" id="1_1warv"]
 [ext_resource type="Theme" uid="uid://d36lbu0jevudq" path="res://ui/item_shop/item_shop_theme.tres" id="1_rmute"]
 [ext_resource type="PackedScene" uid="uid://cdpjbgistk7k5" path="res://ui/item_shop/item_display.tscn" id="2_1warv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1warv"]
+bg_color = Color(0.5019608, 0.28235295, 0.14509805, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.101960786, 0.09411765, 0.09411765, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_38kij"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38kij"]
+bg_color = Color(0.5019608, 0.28235295, 0.14509805, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.101960786, 0.09411765, 0.09411765, 1)
 
 [node name="Item Shop" type="CanvasLayer" node_paths=PackedStringArray("shop_displays")]
 script = ExtResource("1_1warv")
-shop_displays = [NodePath("PanelContainer/CenterContainer/Control/Item Display"), NodePath("PanelContainer/CenterContainer/Control/Item Display2"), NodePath("PanelContainer/CenterContainer/Control/Item Display3"), NodePath("PanelContainer/CenterContainer/Control/Item Display4")]
+shop_displays = [NodePath("PanelContainer/CenterContainer/Control/PanelContainer_Control#Item Display"), NodePath("PanelContainer/CenterContainer/Control/Item Display2"), NodePath("PanelContainer/CenterContainer/Control/Item Display3"), NodePath("PanelContainer/CenterContainer/Control/Item Display4")]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(300, 0)
@@ -32,14 +46,7 @@ layout_mode = 2
 theme = ExtResource("1_rmute")
 metadata/_edit_use_anchors_ = true
 
-[node name="Player2Score" type="Label" parent="PanelContainer/Control/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "300s"
-horizontal_alignment = 1
-
-[node name="Item Display" parent="PanelContainer/Control" instance=ExtResource("2_1warv")]
-
+[node name="PanelContainer_Control#Item Display" parent="PanelContainer/CenterContainer/Control" instance=ExtResource("2_1warv")]
 layout_mode = 2
 
 [node name="Item Display2" parent="PanelContainer/CenterContainer/Control" instance=ExtResource("2_1warv")]
@@ -52,14 +59,24 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="Player1UI" type="Panel" parent="."]
-offset_left = 300.0
-offset_top = 31.0
-offset_right = 600.0
-offset_bottom = 81.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 110.0
+offset_bottom = 73.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="Player1UI" type="Panel" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(150, 120)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1warv")
 
-[node name="Player1Score" type="Label" parent="Player1UI"]
+[node name="Player1Score" type="Label" parent="VBoxContainer/MarginContainer/Player1UI"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -68,12 +85,38 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -25.0
+offset_top = -25.5
 offset_right = 100.0
-offset_bottom = 26.0
+offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Player 1
+300s"
+label_settings = SubResource("LabelSettings_38kij")
+horizontal_alignment = 1
+
+[node name="Player1UI2" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 120)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_38kij")
+
+[node name="Player2Score" type="Label" parent="VBoxContainer/Player1UI2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -25.5
+offset_right = 100.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player 2
 300s"
 label_settings = SubResource("LabelSettings_38kij")
 horizontal_alignment = 1

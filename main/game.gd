@@ -17,9 +17,6 @@ const stage_y_size = 1080
 @onready var end_stage:PackedScene = preload("res://main/stages/end_stage.tscn")
 @onready var total_stages:Array = [stage0, stage1, stage2]
 
-@onready var item_shop = %ItemShop
-#@onready var runner_score = %Player1Score
-
 var players: Array[PlayerInfo]:
 	get:
 		return Globals.players
@@ -60,7 +57,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if should_count_down_timer:
 		running_player.time_left -= delta
-		item_shop.runner_score.text = "%ss" % snappedf(running_player.time_left, 0.1)
 		
 	if running_player.time_left <= 0:
 		player_out_of_time.emit(running_player)
