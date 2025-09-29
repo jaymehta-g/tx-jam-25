@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8pchcr34d50r"]
+[gd_scene load_steps=5 format=3 uid="uid://b8pchcr34d50r"]
 
 [ext_resource type="Script" uid="uid://c3wbxxy4y6xxt" path="res://ui/game_over/game_over.gd" id="1_5nexe"]
 [ext_resource type="Texture2D" uid="uid://btslokp8qcyby" path="res://ui/game_over/gameover.png" id="2_4cp6t"]
+[ext_resource type="AudioStream" uid="uid://b1dhmqbnr538o" path="res://sound/Victory.mp3" id="3_4cp6t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6lpyu"]
 font_size = 150
@@ -25,3 +26,7 @@ offset_right = 1737.0
 offset_bottom = 923.0
 text = "Player Wins"
 label_settings = SubResource("LabelSettings_6lpyu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4cp6t")
+autoplay = true
